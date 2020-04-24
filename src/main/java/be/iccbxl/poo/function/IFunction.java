@@ -19,13 +19,13 @@ public interface IFunction {
 	public boolean update(Person p);
 	public boolean update(Book b);
 	
-	//Logic
-	public int computeRemainingDays(Book b);
-	
 	public List<Person> getPeople();
 	public List<Book> getBooks();
 	
 	public List<Person> findByPerson(String property, String value);
 	
 	public List<Book> findByBook(String property, String value);
+	
+	//Logic
+	public int computeRemainingDays(Book b);
 }
