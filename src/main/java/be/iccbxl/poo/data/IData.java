@@ -8,24 +8,24 @@ import be.iccbcl.poo.entities.Person;
 
 public interface IData {
 
-	public List<Person> findAllPerson();
+	public List<Person> findAllPersons();
 	public List<Person> findByPerson(String property, String value);
 	
-	public List<Book> findAllBook();
+	public List<Book> findAllBooks();
 	public List<Book> findByBook(String property, String value);
 	
 	
 	public boolean deletePerson(UUID uuid);
-	public boolean deletePerson(Person p);
+	public boolean delete(Person p);
 	
 	public boolean deleteBook(UUID uuid);
-	public boolean deleteBook(Book b);
+	public boolean delete(Book b);
 	
 	public int saveAll();
 	
-	public boolean savePerson(Person p);
-	public boolean saveBook(Book b);
+	public boolean save(Person p);
+	public boolean save(Book b);
 	
-	public boolean updatePerson(Person p);
-	public boolean updateBook(Book b);
+	public boolean update(Person p);
+	public boolean update(Book b);
 }

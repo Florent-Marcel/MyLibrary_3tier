@@ -1,55 +1,50 @@
 package be.iccbxl.poo.function;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import be.iccbcl.poo.entities.Book;
 import be.iccbcl.poo.entities.Person;
+import be.iccbxl.poo.data.Data;
 
 public class Function implements IFunction {
+	Data data;
 
 	public List<Person> getMembres() {
-		// TODO Auto-generated method stub
-		return null;
+		return data.findAllPersons();
 	}
 
 	public List<Book> getBooks() {
-		// TODO Auto-generated method stub
-		return null;
+		return data.findAllBooks();
 	}
 
-	public boolean register(Person P) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean register(Person p) {
+		return data.save(p);
 	}
 
 	public boolean register(Book b) {
-		// TODO Auto-generated method stub
-		return false;
+		return data.save(b);
 	}
 
-	public boolean unRegister(Person P) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean unRegister(Person p) {
+		return data.delete(p);
 	}
 
 	public boolean unRegister(Book b) {
-		// TODO Auto-generated method stub
-		return false;
+		return data.delete(b);
 	}
 
-	public boolean update(Person P) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Person p) {
+		return data.update(p);
 	}
 
 	public boolean update(Book b) {
-		// TODO Auto-generated method stub
-		return false;
+		return data.update(b);
 	}
 
 	public int computeRemainingDays(Book b) {
-		// TODO Auto-generated method stub
-		return 0;
+		return b.computeRemainingDays();
 	}
 
 }

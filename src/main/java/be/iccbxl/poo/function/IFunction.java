@@ -10,13 +10,13 @@ public interface IFunction {
 	public List<Person> getMembres();
 	public List<Book> getBooks();
 	
-	public boolean register(Person P);
+	public boolean register(Person p);
 	public boolean register(Book b);
 	
-	public boolean unRegister(Person P);
+	public boolean unRegister(Person p);
 	public boolean unRegister(Book b);
 	
-	public boolean update(Person P);
+	public boolean update(Person p);
 	public boolean update(Book b);
 	
 	//Logic

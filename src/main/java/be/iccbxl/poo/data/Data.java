@@ -8,7 +8,7 @@ import be.iccbcl.poo.entities.Person;
 
 public class Data implements IData {
 
-	public List<Person> findAllPerson() {
+	public List<Person> findAllPersons() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -18,7 +18,7 @@ public class Data implements IData {
 		return null;
 	}
 
-	public List<Book> findAllBook() {
+	public List<Book> findAllBooks() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -33,7 +33,7 @@ public class Data implements IData {
 		return false;
 	}
 
-	public boolean deletePerson(Person p) {
+	public boolean delete(Person p) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -43,7 +43,7 @@ public class Data implements IData {
 		return false;
 	}
 
-	public boolean deleteBook(Book b) {
+	public boolean delete(Book b) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -53,22 +53,22 @@ public class Data implements IData {
 		return 0;
 	}
 
-	public boolean savePerson(Person p) {
+	public boolean save(Person p) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean saveBook(Book b) {
+	public boolean save(Book b) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean updatePerson(Person p) {
+	public boolean update(Person p) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean updateBook(Book b) {
+	public boolean update(Book b) {
 		// TODO Auto-generated method stub
 		return false;
 	}
