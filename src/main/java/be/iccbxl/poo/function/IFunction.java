@@ -1,11 +1,11 @@
-package be.iccbxl.poo.operation;
+package be.iccbxl.poo.function;
 
 import java.util.List;
 
 import be.iccbcl.poo.entities.Book;
 import be.iccbcl.poo.entities.Person;
 
-public interface IOperation {
+public interface IFunction {
 	//Data access
 	public List<Person> getMembres();
 	public List<Book> getBooks();
