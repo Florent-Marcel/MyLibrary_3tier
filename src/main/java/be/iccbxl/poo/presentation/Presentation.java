@@ -43,21 +43,30 @@ public class Presentation implements IPresentation {
 				case 2:
 					addMember();
 					break;
-				
+					
+				case 3:
+					removeMember();
+					break;
 			}
 			
 		}while(choix != 0);
 	}
 	
 	private void showMenu() {
-		System.out.println("1 - Afficher tous les membres.");
+		System.out.println("\n1 - Afficher tous les membres.");
 		System.out.println("2 - Ajouter un membre.");
+		System.out.println("3 - Retirer un membre.");
 		System.out.println("0 - Quitter");
 	}
 	
 	private void printPeople() {
-		for(Person p : func.getPeople()) {
-			System.out.println("Nom: " + p.getName() + "\tInscrit le: " + p.getRegistrationDate());
+		printPeople(func.getPeople());
+	}
+	
+	private void printPeople(List<Person> people) {
+		int i = 0;
+		for(Person p : people) {
+			System.out.println(++i + ".\tNom: " + p.getName() + "\tInscrit le: " + p.getRegistrationDate());
 		}
 	}
 	
@@ -74,6 +83,40 @@ public class Presentation implements IPresentation {
 		name = s.nextLine();
 		
 		func.add(new Person(UUID.randomUUID(), name));
+	}
+	
+	private void removeMember() {
+		String name;
+		List<Person> pf = new ArrayList<Person>(); // people found
+		Person ptr = null; // person to remove
+		System.out.println("Veuillez entrer le nom: ");
+		name = s.nextLine();
+		
+		pf = func.findByPerson("name", name);
+		
+		if(pf.size() == 0) {
+			System.out.println("Aucune personne trouvée");
+		} else {
+			if(pf.size() == 1) {
+				ptr = pf.get(0);
+			} else {
+				System.out.println("Entrez le numéro de la personne a retirer: ");
+				printPeople(pf);
+				
+				int choice = nextInt() - 1;
+				
+				if(choice < pf.size() && choice >= 0) {
+					ptr = pf.get(choice);
+				}
+			}
+			if(ptr != null && func.unRegister(ptr)) {
+				System.out.println("Le membre a été supprimé avec succès");
+			} else {
+				System.out.println("Il y a eu une erreur lors de la suppresion");
+			}
+			
+		}
+		
 	}
 
 }

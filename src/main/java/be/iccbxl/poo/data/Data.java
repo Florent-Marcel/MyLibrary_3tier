@@ -18,30 +18,12 @@ public class Data implements IData {
 		this.filename = filename;
 		f = new File(filename);
 		if(f.exists()) {
+			/*
 			this.people = findAllPersons();
 			this.books = findAllBooks();
+			*/
 		}
 			
-	}
-
-	public List<Person> findAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Person> findByPerson(String property, String value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Book> findAllBooks() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Book> findByBook(String property, String value) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public boolean deletePerson(UUID uuid) {
@@ -87,6 +69,16 @@ public class Data implements IData {
 	public boolean update(Book b) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public List<Person> loadPeople() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Book> loadBooks() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -7,13 +7,9 @@ import be.iccbcl.poo.entities.Book;
 import be.iccbcl.poo.entities.Person;
 
 public interface IData {
-
-	public List<Person> findAllPersons();
-	public List<Person> findByPerson(String property, String value);
 	
-	public List<Book> findAllBooks();
-	public List<Book> findByBook(String property, String value);
-	
+	public List<Person> loadPeople();
+	public List<Book> loadBooks();
 	
 	public boolean deletePerson(UUID uuid);
 	public boolean delete(Person p);

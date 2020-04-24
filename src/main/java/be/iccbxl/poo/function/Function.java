@@ -28,11 +28,11 @@ public class Function implements IFunction {
 
 
 	public List<Person> loadMembres() {
-		return data.findAllPersons();
+		return data.loadPeople();
 	}
 
 	public List<Book> loadBooks() {
-		return data.findAllBooks();
+		return data.loadBooks();
 	}
 
 	public boolean register(Person p) {
@@ -44,7 +44,9 @@ public class Function implements IFunction {
 	}
 
 	public boolean unRegister(Person p) {
-		return data.delete(p);
+		people.remove(p);
+		// TODO return data.delete(p);
+		return true;
 	}
 
 	public boolean unRegister(Book b) {
@@ -81,6 +83,29 @@ public class Function implements IFunction {
 
 	public List<Book> getBooks() {
 		return books;
+	}
+
+
+	public List<Person> findByPerson(String property, String value) {
+		String prop = property.toLowerCase();
+		String val = value.toLowerCase();
+		List<Person> personFound = new ArrayList<Person>();
+		
+		if(property.equals("name")){
+			for(Person p : people) {
+				if(p.getName().toLowerCase().equals(val)) {
+					personFound.add(p);
+				}
+			}
+		}
+		// TODO manage others properties
+		return personFound;
+	}
+
+
+	public List<Book> findByBook(String property, String value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -27,4 +27,8 @@ public interface IFunction {
 	
 	public List<Person> getPeople();
 	public List<Book> getBooks();
+	
+	public List<Person> findByPerson(String property, String value);
+	
+	public List<Book> findByBook(String property, String value);
 }
