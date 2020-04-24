@@ -2,7 +2,7 @@ package be.iccbxl.poo.presentation;
 
 public class Presentation implements IPresentation {
 
-	public Void Run() {
+	public Void run() {
 		// TODO Auto-generated method stub
 		return null;
 	}

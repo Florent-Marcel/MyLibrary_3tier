@@ -1,5 +1,7 @@
 package be.iccbxl.poo.data;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -7,6 +9,20 @@ import be.iccbcl.poo.entities.Book;
 import be.iccbcl.poo.entities.Person;
 
 public class Data implements IData {
+	List<Person> people;
+	List<Book> books;
+	private String filename;
+	File f;
+	
+	public Data(String filename) {
+		this.filename = filename;
+		f = new File(filename);
+		if(f.exists()) {
+			this.people = findAllPersons();
+			this.books = findAllBooks();
+		}
+			
+	}
 
 	public List<Person> findAllPersons() {
 		// TODO Auto-generated method stub
