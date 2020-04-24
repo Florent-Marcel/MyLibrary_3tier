@@ -1,4 +1,4 @@
-package be.iccbcl.poo.MyLibrary_3tier;
+package be.iccbcl.poo;
 
 /**
  * Hello world!
