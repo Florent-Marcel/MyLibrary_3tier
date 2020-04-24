@@ -15,5 +15,7 @@ public class App
         Presentation presentation = new Presentation();
         
         presentation.run();
+        
+        System.out.println( "aurevoir" );
     }
 }

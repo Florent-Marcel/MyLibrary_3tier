@@ -7,8 +7,8 @@ import be.iccbcl.poo.entities.Person;
 
 public interface IFunction {
 	//Data access
-	public List<Person> getMembres();
-	public List<Book> getBooks();
+	public List<Person> loadMembres();
+	public List<Book> loadBooks();
 	
 	public boolean register(Person p);
 	public boolean register(Book b);
@@ -21,4 +21,10 @@ public interface IFunction {
 	
 	//Logic
 	public int computeRemainingDays(Book b);
+	
+	public boolean add(Person p);
+	public boolean add(Book b);
+	
+	public List<Person> getPeople();
+	public List<Book> getBooks();
 }
