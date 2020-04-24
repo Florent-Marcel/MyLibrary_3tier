@@ -82,7 +82,7 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
 		
-		func.add(new Person(UUID.randomUUID(), name));
+		func.register(new Person(UUID.randomUUID(), name));
 	}
 	
 	private void removeMember() {

@@ -17,6 +17,13 @@ public class Data implements IData {
 	public Data(String filename) {
 		this.filename = filename;
 		f = new File(filename);
+		people = new ArrayList<Person>();
+		books = new ArrayList<Book>();
+		
+		people.add(new Person(UUID.randomUUID(), "Gui"));
+		people.add(new Person(UUID.randomUUID(), "Anis"));
+		people.add(new Person(UUID.randomUUID(), "Max"));
+		
 		if(f.exists()) {
 			/*
 			this.people = findAllPersons();
@@ -32,8 +39,9 @@ public class Data implements IData {
 	}
 
 	public boolean delete(Person p) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		// TODO delete in files + manage errors
+		return people.remove(p);
 	}
 
 	public boolean deleteBook(UUID uuid) {
@@ -42,23 +50,18 @@ public class Data implements IData {
 	}
 
 	public boolean delete(Book b) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int saveAll() {
-		// TODO Auto-generated method stub
-		return 0;
+		// TODO delete in files + manage errors
+		return people.remove(b);
 	}
 
 	public boolean save(Person p) {
-		// TODO Auto-generated method stub
-		return false;
+		// TODO add in files + manage errors
+		return people.add(p);
 	}
 
 	public boolean save(Book b) {
-		// TODO Auto-generated method stub
-		return false;
+		// TODO delete in files + manage errors
+		return books.add(b);
 	}
 
 	public boolean update(Person p) {
@@ -81,4 +84,32 @@ public class Data implements IData {
 		return null;
 	}
 
+	public List<Person> findByPerson(String property, String value) {
+		String prop = property.toLowerCase();
+		String val = value.toLowerCase();
+		List<Person> personFound = new ArrayList<Person>();
+		
+		if(property.equals("name")){
+			for(Person p : people) {
+				if(p.getName().toLowerCase().equals(val)) {
+					personFound.add(p);
+				}
+			}
+		}
+		// TODO manage others properties
+		return personFound;
+	}
+
+	public List<Book> findByBook(String property, String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Person> getPeople() {
+		return people;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
 }

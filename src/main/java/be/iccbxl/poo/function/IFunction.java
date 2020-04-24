@@ -22,9 +22,6 @@ public interface IFunction {
 	//Logic
 	public int computeRemainingDays(Book b);
 	
-	public boolean add(Person p);
-	public boolean add(Book b);
-	
 	public List<Person> getPeople();
 	public List<Book> getBooks();
 	

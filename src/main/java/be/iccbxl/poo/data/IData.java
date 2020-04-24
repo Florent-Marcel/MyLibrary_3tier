@@ -8,6 +8,9 @@ import be.iccbxl.poo.entities.Person;
 
 public interface IData {
 	
+	public List<Person> findByPerson(String property, String value);
+	public List<Book> findByBook(String property, String value);
+	
 	public List<Person> loadPeople();
 	public List<Book> loadBooks();
 	
@@ -17,11 +20,12 @@ public interface IData {
 	public boolean deleteBook(UUID uuid);
 	public boolean delete(Book b);
 	
-	public int saveAll();
-	
 	public boolean save(Person p);
 	public boolean save(Book b);
 	
 	public boolean update(Person p);
 	public boolean update(Book b);
+	
+	public List<Person> getPeople();
+	public List<Book> getBooks();
 }

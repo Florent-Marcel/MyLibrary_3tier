@@ -7,25 +7,16 @@ import java.util.List;
 import java.util.UUID;
 
 import be.iccbxl.poo.data.Data;
+import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
 public class Function implements IFunction {
-	Data data;
-	
-	private List<Person> people;
-	
-	private List<Book> books;
+	IData data;
 	
 	public Function() {
-		people = new ArrayList<Person>();
-		books = new ArrayList<Book>();
-		
-		add(new Person(UUID.randomUUID(), "Gui"));
-		add(new Person(UUID.randomUUID(), "Anis"));
-		add(new Person(UUID.randomUUID(), "Max"));
+		data = new Data("save.xml");
 	}
-
 
 	public List<Person> loadMembres() {
 		return data.loadPeople();
@@ -44,9 +35,7 @@ public class Function implements IFunction {
 	}
 
 	public boolean unRegister(Person p) {
-		people.remove(p);
-		// TODO return data.delete(p);
-		return true;
+		return data.delete(p);
 	}
 
 	public boolean unRegister(Book b) {
@@ -64,48 +53,25 @@ public class Function implements IFunction {
 	public int computeRemainingDays(Book b) {
 		return b.computeRemainingDays();
 	}
-
-	public boolean add(Person p) {
-		people.add(p);
-		//TODO manage duplicate
-		return true;
-	}
-
-	public boolean add(Book b) {
-		books.add(b);
-		//TODO manage duplicate
-		return true;
-	}
 	
 	public List<Person> getPeople() {
-		return people;
+		return data.getPeople();
 	}
 
 	public List<Book> getBooks() {
-		return books;
+		return data.getBooks();
 	}
 
-
 	public List<Person> findByPerson(String property, String value) {
-		String prop = property.toLowerCase();
-		String val = value.toLowerCase();
-		List<Person> personFound = new ArrayList<Person>();
-		
-		if(property.equals("name")){
-			for(Person p : people) {
-				if(p.getName().toLowerCase().equals(val)) {
-					personFound.add(p);
-				}
-			}
-		}
-		// TODO manage others properties
-		return personFound;
+		return data.findByPerson(property, value);
 	}
 
 
 	public List<Book> findByBook(String property, String value) {
-		// TODO Auto-generated method stub
-		return null;
+		return data.findByBook(property, value);
 	}
+
+
+	
 
 }
