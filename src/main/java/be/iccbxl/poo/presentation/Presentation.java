@@ -38,6 +38,11 @@ public class Presentation implements IPresentation {
 				
 				case 1:
 					printPeople();
+					break;
+				
+				case 2:
+					addMember();
+					break;
 				
 			}
 			
@@ -46,6 +51,7 @@ public class Presentation implements IPresentation {
 	
 	private void showMenu() {
 		System.out.println("1 - Afficher tous les membres.");
+		System.out.println("2 - Ajouter un membre.");
 		System.out.println("0 - Quitter");
 	}
 	
@@ -60,6 +66,14 @@ public class Presentation implements IPresentation {
 		s.nextLine();
 			
 		return i;
+	}
+	
+	private void addMember() {
+		String name;
+		System.out.println("Veuillez entrer le nom: ");
+		name = s.nextLine();
+		
+		func.add(new Person(UUID.randomUUID(), name));
 	}
 
 }
