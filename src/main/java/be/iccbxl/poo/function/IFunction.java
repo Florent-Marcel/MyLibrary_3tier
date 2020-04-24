@@ -2,8 +2,8 @@ package be.iccbxl.poo.function;
 
 import java.util.List;
 
-import be.iccbcl.poo.entities.Book;
-import be.iccbcl.poo.entities.Person;
+import be.iccbxl.poo.entities.Book;
+import be.iccbxl.poo.entities.Person;
 
 public interface IFunction {
 	//Data access

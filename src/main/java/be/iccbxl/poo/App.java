@@ -1,4 +1,4 @@
-package be.iccbcl.poo;
+package be.iccbxl.poo;
 
 import be.iccbxl.poo.presentation.Presentation;
 

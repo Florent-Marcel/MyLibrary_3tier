@@ -1,4 +1,4 @@
-package be.iccbcl.poo.entities;
+package be.iccbxl.poo.entities;
 
 import java.time.LocalDate;
 import java.time.Period;

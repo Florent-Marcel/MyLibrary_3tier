@@ -3,8 +3,8 @@ package be.iccbxl.poo.data;
 import java.util.List;
 import java.util.UUID;
 
-import be.iccbcl.poo.entities.Book;
-import be.iccbcl.poo.entities.Person;
+import be.iccbxl.poo.entities.Book;
+import be.iccbxl.poo.entities.Person;
 
 public interface IData {
 	
