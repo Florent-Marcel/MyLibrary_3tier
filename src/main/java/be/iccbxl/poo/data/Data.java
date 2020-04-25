@@ -54,7 +54,7 @@ public class Data implements IData {
 
 	public boolean delete(Book b) {
 		// TODO delete in files + manage errors
-		return people.remove(b);
+		return books.remove(b);
 	}
 
 	public boolean save(Person p) {
@@ -92,7 +92,7 @@ public class Data implements IData {
 		String val = value.toLowerCase();
 		List<Person> personFound = new ArrayList<Person>();
 		
-		if(property.equals("name")){
+		if(prop.equals("name")){
 			for(Person p : people) {
 				if(p.getName().toLowerCase().equals(val)) {
 					personFound.add(p);
@@ -104,8 +104,19 @@ public class Data implements IData {
 	}
 
 	public List<Book> findByBook(String property, String value) {
-		// TODO Auto-generated method stub
-		return null;
+		String prop = property.toLowerCase();
+		String val = value.toLowerCase();
+		List<Book> bookFound = new ArrayList<Book>();
+		
+		if(prop.equals("title")){
+			for(Book b : books) {
+				if(b.getTitle().toLowerCase().equals(val)) {
+					bookFound.add(b);
+				}
+			}
+		}
+		// TODO manage others properties
+		return bookFound;
 	}
 
 	public List<Person> getPeople() {

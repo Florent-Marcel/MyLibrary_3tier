@@ -56,6 +56,10 @@ public class Presentation implements IPresentation {
 				case 5:
 					addBook();
 					break;
+					
+				case 6:
+					removeBook();
+					break;
 				
 				default:
 					System.out.println("Commande inconnue.");
@@ -70,6 +74,7 @@ public class Presentation implements IPresentation {
 		System.out.println("3 - Retirer un membre.");
 		System.out.println("4 - Afficher tous les livres.");
 		System.out.println("5 - Ajouter un livre.");
+		System.out.println("6 - Retirer un livre.");
 		System.out.println("0 - Quitter.");
 	}
 	
@@ -159,6 +164,40 @@ public class Presentation implements IPresentation {
 		nbPages = nextShort();
 		
 		func.register(new Book(UUID.randomUUID(), title, author, nbPages, language));
+	}
+	
+	private void removeBook() {
+		String title;
+		List<Book> bf = new ArrayList<Book>(); // people found
+		Book btr = null; // person to remove
+		System.out.println("Veuillez entrer le titre: ");
+		title = s.nextLine();
+		
+		bf = func.findByBook("title", title);
+		
+		if(bf.size() == 0) {
+			System.out.println("Aucun livre trouvé");
+		} else {
+			if(bf.size() == 1) {
+				btr = bf.get(0);
+			} else {
+				System.out.println("Entrez le numéro du livre a retirer: ");
+				printBooks(bf);
+				
+				int choice = nextInt() - 1;
+				
+				if(choice < bf.size() && choice >= 0) {
+					btr = bf.get(choice);
+				}
+			}
+			if(btr != null && func.unRegister(btr)) {
+				System.out.println("Le livre a été supprimé avec succès");
+			} else {
+				System.out.println("Il y a eu une erreur lors de la suppresion");
+			}
+			
+		}
+		
 	}
 
 }
