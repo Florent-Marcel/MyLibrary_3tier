@@ -7,7 +7,7 @@ import org.simpleframework.xml.transform.Transform;
 
 
 
-public class CustomUUID implements Transform<UUID>{
+public class TUUID implements Transform<UUID>{
 
 	@Override
 	public UUID read(String value) throws Exception {

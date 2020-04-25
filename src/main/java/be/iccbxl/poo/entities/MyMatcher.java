@@ -11,9 +11,9 @@ public class MyMatcher implements Matcher {
     @SuppressWarnings("unchecked")
     public Transform match(Class type) throws Exception {
         if (type.equals(UUID.class))
-            return new CustomUUID();
+            return new TUUID();
         if(type.equals(LocalDate.class))
-        	return new CustomLocalData();
+        	return new TLocalData();
         return null;
     }
 }

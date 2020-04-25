@@ -11,6 +11,10 @@ public class Person {
 	private LocalDate registrationDate;
 	private ArrayList<Book> books;
 	
+	public Person() {
+		
+	}
+	
 	public Person(UUID id, String name) {
 		this.id = id;
 		this.name = name;
@@ -19,10 +23,6 @@ public class Person {
 		this.books = new ArrayList<Book>();
 	}
 	
-	public Person() {
-		
-	}
-
 	public String getName() {
 		return name;
 	}

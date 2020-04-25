@@ -7,17 +7,18 @@ import java.util.List;
 import java.util.UUID;
 
 import be.iccbxl.poo.data.Data;
-import be.iccbxl.poo.data.DataInitXml;
+import be.iccbxl.poo.data.DataXml;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
 public class Function implements IFunction {
 	IData data;
+	static String f = "data\\save.xml";
 	
 	public Function() {
 		//data = new Data("data\\save.xml");
-		data = DataInitXml.dataInit();
+		data = IData.dataLoad(f);
 	}
 
 	public List<Person> loadMembres() {
@@ -75,7 +76,7 @@ public class Function implements IFunction {
 
 	public void save() {
 		// TODO Auto-generated method stub
-		data.writeXml();
+		IData.dataWrite(f, data);
 	}
 
 

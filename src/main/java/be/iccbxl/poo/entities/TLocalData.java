@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import org.simpleframework.xml.transform.Transform;
 
-public class CustomLocalData implements Transform<LocalDate>{
+public class TLocalData implements Transform<LocalDate>{
 
 	@Override
 	public LocalDate read(String value) throws Exception {

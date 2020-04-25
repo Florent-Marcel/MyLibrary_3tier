@@ -20,6 +20,13 @@
       <registrationDate>2020-04-25</registrationDate>
       <books/>
    </person>
+   <person>
+      <id>62de6c21-8f14-439a-883d-a9e701643788</id>
+      <name>Pierre</name>
+      <maxBooks>3</maxBooks>
+      <registrationDate>2020-04-25</registrationDate>
+      <books/>
+   </person>
    <book>
       <id>db90ce51-c20e-4043-b201-7ae0bfc01421</id>
       <title>Je suis une légende</title>

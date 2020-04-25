@@ -147,12 +147,12 @@ public class Data implements IData {
 		return books;
 	}
 	
-	public void writeXml() {
+	/*public void writeXml() {
 		try {
 			serial.write(this, f);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }
