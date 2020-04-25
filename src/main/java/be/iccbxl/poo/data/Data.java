@@ -12,6 +12,7 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import be.iccbxl.poo.entities.Book;
+import be.iccbxl.poo.entities.MyMatcher;
 import be.iccbxl.poo.entities.Person;
 
 @Root
@@ -42,15 +43,17 @@ public class Data implements IData {
 		books.add(new Book(UUID.randomUUID(), "Je suis une légende", "Richard Matheson", (short)200, "Français"));
 		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));
 		
+		serial = new Persister(new MyMatcher());
+		
 		if(f.exists()) {
-			/*
-			this.people = findAllPersons();
-			this.books = findAllBooks();
-			*/
+			
 		}
 		
-		serial = new Persister();
-			
+
+	}
+	
+	public Data() {
+		
 	}
 
 	public boolean deletePerson(UUID uuid) {

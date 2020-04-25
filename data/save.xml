@@ -1,0 +1,41 @@
+<data>
+   <person>
+      <id>3baeb9a1-5fdc-4c3f-8369-0d4da4acd895</id>
+      <name>Gui</name>
+      <maxBooks>3</maxBooks>
+      <registrationDate>2020-04-25</registrationDate>
+      <books/>
+   </person>
+   <person>
+      <id>8cf1a74e-16ba-47a0-ac7c-d5d14617372d</id>
+      <name>Anis</name>
+      <maxBooks>3</maxBooks>
+      <registrationDate>2020-04-25</registrationDate>
+      <books/>
+   </person>
+   <person>
+      <id>fcde40d9-9f10-4d24-951c-7c6c00f10033</id>
+      <name>Max</name>
+      <maxBooks>3</maxBooks>
+      <registrationDate>2020-04-25</registrationDate>
+      <books/>
+   </person>
+   <book>
+      <id>db90ce51-c20e-4043-b201-7ae0bfc01421</id>
+      <title>Je suis une légende</title>
+      <author>Richard Matheson</author>
+      <totalPages>200</totalPages>
+      <loanPeriod>14</loanPeriod>
+      <rentalPrice>1.25</rentalPrice>
+      <language>Français</language>
+   </book>
+   <book>
+      <id>3916f967-43fa-4740-b482-60a564086f50</id>
+      <title>Des fleurs pour Algernon</title>
+      <author>Daniel Keyes</author>
+      <totalPages>400</totalPages>
+      <loanPeriod>14</loanPeriod>
+      <rentalPrice>1.25</rentalPrice>
+      <language>Français</language>
+   </book>
+</data>

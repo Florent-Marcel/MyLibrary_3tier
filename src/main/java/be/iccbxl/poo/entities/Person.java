@@ -18,6 +18,10 @@ public class Person {
 		this.registrationDate = LocalDate.now();
 		this.books = new ArrayList<Book>();
 	}
+	
+	public Person() {
+		
+	}
 
 	public String getName() {
 		return name;

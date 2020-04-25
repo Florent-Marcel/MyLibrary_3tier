@@ -27,6 +27,10 @@ public class Book {
 		this.borrowingDate = null;
 	}
 
+	public Book() {
+		
+	}
+	
 	public String getTitle() {
 		return title;
 	}

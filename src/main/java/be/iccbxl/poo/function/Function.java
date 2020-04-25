@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import be.iccbxl.poo.data.Data;
+import be.iccbxl.poo.data.DataInitXml;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
@@ -15,7 +16,8 @@ public class Function implements IFunction {
 	IData data;
 	
 	public Function() {
-		data = new Data("data\\save.xml");
+		//data = new Data("data\\save.xml");
+		data = DataInitXml.dataInit();
 	}
 
 	public List<Person> loadMembres() {
