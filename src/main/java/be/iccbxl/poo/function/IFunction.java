@@ -28,4 +28,6 @@ public interface IFunction {
 	
 	//Logic
 	public int computeRemainingDays(Book b);
+	
+	public void save();
 }

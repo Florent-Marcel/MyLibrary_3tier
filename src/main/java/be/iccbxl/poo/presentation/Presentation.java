@@ -35,6 +35,7 @@ public class Presentation implements IPresentation {
 			
 			switch(choix) {
 				case 0:
+					func.save();
 					break;
 				
 				case 1:

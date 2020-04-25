@@ -15,7 +15,7 @@ public class Function implements IFunction {
 	IData data;
 	
 	public Function() {
-		data = new Data("save.xml");
+		data = new Data("data\\save.xml");
 	}
 
 	public List<Person> loadMembres() {
@@ -69,6 +69,11 @@ public class Function implements IFunction {
 
 	public List<Book> findByBook(String property, String value) {
 		return data.findByBook(property, value);
+	}
+
+	public void save() {
+		// TODO Auto-generated method stub
+		data.writeXml();
 	}
 
 

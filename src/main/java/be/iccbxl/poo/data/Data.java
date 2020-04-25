@@ -5,14 +5,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
+@Root
 public class Data implements IData {
-	List<Person> people;
-	List<Book> books;
+	
+	@ElementList(inline = true, entry = "person")
+	private List<Person> people;
+	
+	@ElementList(inline = true, entry = "book")
+	private List<Book> books;
+	
 	private String filename;
-	File f;
+	
+	private File f;
+	
+	private Serializer serial;
 	
 	public Data(String filename) {
 		this.filename = filename;
@@ -33,6 +48,8 @@ public class Data implements IData {
 			this.books = findAllBooks();
 			*/
 		}
+		
+		serial = new Persister();
 			
 	}
 
@@ -125,5 +142,14 @@ public class Data implements IData {
 
 	public List<Book> getBooks() {
 		return books;
+	}
+	
+	public void writeXml() {
+		try {
+			serial.write(this, f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
