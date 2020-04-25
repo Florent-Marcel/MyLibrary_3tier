@@ -24,6 +24,9 @@ public class Data implements IData {
 		people.add(new Person(UUID.randomUUID(), "Anis"));
 		people.add(new Person(UUID.randomUUID(), "Max"));
 		
+		books.add(new Book(UUID.randomUUID(), "Je suis une légende", "Richard Matheson", (short)200, "Français"));
+		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));
+		
 		if(f.exists()) {
 			/*
 			this.people = findAllPersons();

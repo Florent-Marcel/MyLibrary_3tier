@@ -31,13 +31,14 @@ public class Presentation implements IPresentation {
 		do {
 			showMenu();
 			choix = nextInt();
+			System.out.println("");
 			
 			switch(choix) {
 				case 0:
 					break;
 				
 				case 1:
-					printPeople();
+					printPeople(func.getPeople());
 					break;
 				
 				case 2:
@@ -47,6 +48,13 @@ public class Presentation implements IPresentation {
 				case 3:
 					removeMember();
 					break;
+					
+				case 4:
+					printBooks(func.getBooks());
+					break;
+				
+				default:
+					System.out.println("Commande inconnue.");
 			}
 			
 		}while(choix != 0);
@@ -56,11 +64,8 @@ public class Presentation implements IPresentation {
 		System.out.println("\n1 - Afficher tous les membres.");
 		System.out.println("2 - Ajouter un membre.");
 		System.out.println("3 - Retirer un membre.");
-		System.out.println("0 - Quitter");
-	}
-	
-	private void printPeople() {
-		printPeople(func.getPeople());
+		System.out.println("4 - Afficher tous les livres.");
+		System.out.println("0 - Quitter.");
 	}
 	
 	private void printPeople(List<Person> people) {
@@ -73,7 +78,7 @@ public class Presentation implements IPresentation {
 	private int nextInt() {
 		int i = s.nextInt();
 		s.nextLine();
-			
+		
 		return i;
 	}
 	
@@ -117,6 +122,12 @@ public class Presentation implements IPresentation {
 			
 		}
 		
+	}
+	
+	private void printBooks(List<Book> books) {
+		for(Book b : func.getBooks()) {
+			System.out.println("1.\tTitre: " + b.getTitle() + "\tAuteur: " + b.getAuthor());
+		}
 	}
 
 }
