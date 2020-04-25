@@ -52,6 +52,10 @@ public class Presentation implements IPresentation {
 				case 4:
 					printBooks(func.getBooks());
 					break;
+					
+				case 5:
+					addBook();
+					break;
 				
 				default:
 					System.out.println("Commande inconnue.");
@@ -65,6 +69,7 @@ public class Presentation implements IPresentation {
 		System.out.println("2 - Ajouter un membre.");
 		System.out.println("3 - Retirer un membre.");
 		System.out.println("4 - Afficher tous les livres.");
+		System.out.println("5 - Ajouter un livre.");
 		System.out.println("0 - Quitter.");
 	}
 	
@@ -80,6 +85,13 @@ public class Presentation implements IPresentation {
 		s.nextLine();
 		
 		return i;
+	}
+	
+	private short nextShort() {
+		short nb = s.nextShort();
+		s.nextLine();
+		
+		return nb;
 	}
 	
 	private void addMember() {
@@ -126,8 +138,27 @@ public class Presentation implements IPresentation {
 	
 	private void printBooks(List<Book> books) {
 		for(Book b : func.getBooks()) {
-			System.out.println("1.\tTitre: " + b.getTitle() + "\tAuteur: " + b.getAuthor());
+			System.out.println("1.\tAuteur: " + b.getAuthor() + "\t\tTitre: " + b.getTitle() );
 		}
+	}
+	
+	private void addBook() {
+		String title, author, language;
+		short nbPages;
+		
+		System.out.println("Veuillez entrer le titre: ");
+		title = s.nextLine();
+		
+		System.out.println("Veuillez entrer l'auteur: ");
+		author = s.nextLine();
+		
+		System.out.println("Veuillez entrer la langue: ");
+		language = s.nextLine();
+		
+		System.out.println("Veuillez entrer le nombre de pages: ");
+		nbPages = nextShort();
+		
+		func.register(new Book(UUID.randomUUID(), title, author, nbPages, language));
 	}
 
 }
