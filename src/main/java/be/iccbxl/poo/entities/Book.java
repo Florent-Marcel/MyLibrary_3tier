@@ -123,8 +123,13 @@ public class Book {
 	}
 
 	public void setBorrower(Person borrower) {
-		this.borrowerID = borrower.getId();
-		this.borrowerName = borrower.getName();
+		if(borrower == null) {
+			this.borrowerID = null;
+			this.borrowerName = "";
+		} else {
+			this.borrowerID = borrower.getId();
+			this.borrowerName = borrower.getName();
+		}
 	}
 
 	public UUID getId() {
