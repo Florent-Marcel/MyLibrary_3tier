@@ -12,16 +12,16 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import be.iccbxl.poo.entities.Book;
-import be.iccbxl.poo.entities.MyMatcher;
 import be.iccbxl.poo.entities.Person;
+import be.iccbxl.poo.matcher.MyMatcher;
 
 @Root
 public class Data implements IData {
 	
-	@ElementList(inline = true, entry = "person")
+	@ElementList(inline = true, entry = "person", required=false)
 	private List<Person> people;
 	
-	@ElementList(inline = true, entry = "book")
+	@ElementList(inline = true, entry = "book", required=false)
 	private List<Book> books;
 	
 	private String filename;

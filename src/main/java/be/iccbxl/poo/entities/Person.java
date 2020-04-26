@@ -4,15 +4,33 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
+
+@Root
 public class Person {
+	
+	@Attribute(name="id")
 	protected UUID id;
+	
+	@Attribute(name="name")
 	private String name;
+	
+	@Attribute(name="maxBooks")
 	private byte maxBooks;
+	
+	@Attribute(name="registrationDate")
 	private LocalDate registrationDate;
+	
+	@ElementList(inline = true, entry = "book", name="books", required=false)
 	private ArrayList<Book> books;
 	
 	public Person() {
-		
+		// pour sérialiser
+		if(books == null) {
+			books = new ArrayList<Book>();
+		}
 	}
 	
 	public Person(UUID id, String name) {

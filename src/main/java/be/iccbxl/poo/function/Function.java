@@ -18,6 +18,7 @@ public class Function implements IFunction {
 	public Function() {
 		//data = new Data("data\\save.xml");
 		data = IData.dataLoad(f);
+		data.getPeople().get(0).borrows(data.getBooks().get(0));
 	}
 
 	public List<Person> loadMembres() {

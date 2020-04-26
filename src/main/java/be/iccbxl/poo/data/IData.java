@@ -8,8 +8,8 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import be.iccbxl.poo.entities.Book;
-import be.iccbxl.poo.entities.MyMatcher;
 import be.iccbxl.poo.entities.Person;
+import be.iccbxl.poo.matcher.MyMatcher;
 
 public interface IData {
 	

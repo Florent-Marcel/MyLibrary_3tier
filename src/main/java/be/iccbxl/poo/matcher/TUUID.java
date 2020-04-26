@@ -1,4 +1,4 @@
-package be.iccbxl.poo.entities;
+package be.iccbxl.poo.matcher;
 
 import java.util.UUID;
 

@@ -4,16 +4,46 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.UUID;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+@Root
 public class Book {
+	
+	@Attribute(name="id")
 	protected UUID id;
+	
+	@Attribute(name="title")
 	protected String title;
+	
+	@Attribute(name="author")
 	protected String author;
+	
+	@Attribute(name="totalPages")
 	protected short totalPages;
+	
+	@Attribute(name="loanPeriod")
 	protected byte loanPeriod;
+	
+	@Attribute(name="rentalPrice")
 	protected double rentalPrice;
+	
+	@Element(required=false)
 	protected LocalDate borrowingDate;
+	
+	@Attribute(name="language")
 	protected String language;
-	protected Person borrower;
+	
+	@Element(required=false)
+	protected UUID borrowerID;
+	
+	@Element(required=false)
+	protected String borrowerName;
+	
+	public Book() {
+		// pour sérialiser
+	}
 	
 	public Book(UUID id, String title, String author, short totalPages, String language) {
 		this.id = id;
@@ -23,12 +53,9 @@ public class Book {
 		this.language = language;
 		this.loanPeriod = 14;
 		this.rentalPrice = 1.25;
-		this.borrower = null;
+		this.borrowerID = null;
 		this.borrowingDate = null;
-	}
-
-	public Book() {
-		
+		this.borrowerName="";
 	}
 	
 	public String getTitle() {
@@ -87,12 +114,17 @@ public class Book {
 		this.language = language;
 	}
 
-	public Person getBorrower() {
-		return borrower;
+	public UUID getBorrowerID() {
+		return borrowerID;
+	}
+	
+	public String getBorrowerName() {
+		return borrowerName;
 	}
 
 	public void setBorrower(Person borrower) {
-		this.borrower = borrower;
+		this.borrowerID = borrower.getId();
+		this.borrowerName = borrower.getName();
 	}
 
 	public UUID getId() {
@@ -103,7 +135,7 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", totalPages=" + totalPages
 				+ ", loanPeriod=" + loanPeriod + ", rentalPrice=" + rentalPrice + ", borrowingDate=" + borrowingDate
-				+ ", language=" + language + ", borrower=" + ((borrower!=null) ? borrower.getName():null) + "]";
+				+ ", language=" + language + ", borrower=" + ((borrowerID!=null) ? borrowerName:null) + "]";
 	}
 
 	/**
