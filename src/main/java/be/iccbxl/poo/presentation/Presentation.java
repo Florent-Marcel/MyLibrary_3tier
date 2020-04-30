@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import be.iccbxl.poo.config.AppConfiguration;
@@ -25,6 +26,10 @@ public class Presentation implements IPresentation {
 	
 	
 	
+	public void setLogic(ILogic logic) {
+		this.logic = logic;
+	}
+
 	public Presentation() {
 		//AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
 		s = new Scanner(System.in);
@@ -43,6 +48,7 @@ public class Presentation implements IPresentation {
 			switch(choix) {
 				case 0:
 					logic.save();
+					System.out.println("Le programme a été quitté avec succès et les données ont été sauvegardées");
 					break;
 				
 				case 1:

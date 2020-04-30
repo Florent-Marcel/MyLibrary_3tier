@@ -31,7 +31,7 @@ public class Data implements IData {
 	private Serializer serial;
 	
 	public Data(String filename) {
-		this.filename = filename;
+		this.setFilename(filename);
 		f = new File(filename);
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
@@ -166,6 +166,13 @@ public class Data implements IData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void setFilename(String filename) {
+		serial = new Persister(new MyMatcher());
+		this.filename = filename;
+		f = new File(filename);
+		dataLoad();
 	}
 	
 	/*public void writeXml() {

@@ -77,6 +77,10 @@ public class Logic implements ILogic {
 		data.dataWrite();
 	}
 
+	public void setData(IData data) {
+		this.data = data;
+	}
+
 
 	
 
