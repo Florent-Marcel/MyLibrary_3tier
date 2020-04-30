@@ -30,31 +30,22 @@ public class Data implements IData {
 	
 	private Serializer serial;
 	
-	public Data(String filename) {
-		this.filename = filename;
+	public Data() {
+		this.filename = "data\\save.xml";
 		f = new File(filename);
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
 		
-		people.add(new Person(UUID.randomUUID(), "Gui"));
+		/*people.add(new Person(UUID.randomUUID(), "Gui"));
 		people.add(new Person(UUID.randomUUID(), "Anis"));
 		people.add(new Person(UUID.randomUUID(), "Max"));
 		
 		books.add(new Book(UUID.randomUUID(), "Je suis une légende", "Richard Matheson", (short)200, "Français"));
-		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));
+		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));*/
 		
 		serial = new Persister(new MyMatcher());
-		
-		if(f.exists()) {
-			
-		}
-		
-
 	}
 	
-	public Data() {
-		
-	}
 
 	public boolean deletePerson(UUID uuid) {
 		// TODO Auto-generated method stub
@@ -145,6 +136,26 @@ public class Data implements IData {
 
 	public List<Book> getBooks() {
 		return books;
+	}
+	
+	public Data dataLoad() {
+		
+		try {
+			 return serial.read(Data.class, f);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public void dataWrite() {
+		
+		try {
+			serial.write(this, f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/*public void writeXml() {

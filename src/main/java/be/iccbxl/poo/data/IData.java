@@ -34,31 +34,9 @@ public interface IData {
 	public List<Person> getPeople();
 	public List<Book> getBooks();
 	
-	public static Data dataLoad(String f) {
-		File file = new File(f);
-		
-		Serializer serial = new Persister(new MyMatcher());
-		
-		try {
-			return serial.read(Data.class, file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+	public Data dataLoad();
 	
-	public static void dataWrite(String f, IData data) {
-		File file = new File(f);
-		
-		Serializer serial = new Persister(new MyMatcher());
-		
-		try {
-			serial.write(data, file);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	public void dataWrite();
 	
 	//public void writeXml();
 }

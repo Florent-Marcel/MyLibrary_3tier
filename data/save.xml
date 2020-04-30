@@ -1,13 +1,7 @@
 <data>
-   <person id="81723bc3-d825-48fd-818e-bd2f5d6b32a4" name="Gui" maxBooks="3" registrationDate="2020-04-26">
-      <book id="97fd7760-c948-4b42-bd43-3222c941c939" title="Je suis une légende" author="Richard Matheson" totalPages="200" loanPeriod="14" rentalPrice="1.25" language="Français">
-         <borrowingDate>2020-04-26</borrowingDate>
-         <borrowerID>81723bc3-d825-48fd-818e-bd2f5d6b32a4</borrowerID>
-         <borrowerName>Gui</borrowerName>
-      </book>
-   </person>
    <person id="e89f9add-1610-4263-89be-1d4ef421f8d2" name="Anis" maxBooks="3" registrationDate="2020-04-26"/>
    <person id="cb06098f-fadc-4ba6-aa10-cfdb5a658f9a" name="Max" maxBooks="3" registrationDate="2020-04-26"/>
+   <person id="56599402-2511-4688-a322-4a4168d97cc6" name="Pierre" maxBooks="3" registrationDate="2020-04-26"/>
    <book id="97fd7760-c948-4b42-bd43-3222c941c939" title="Je suis une légende" author="Richard Matheson" totalPages="200" loanPeriod="14" rentalPrice="1.25" language="Français">
       <borrowingDate>2020-04-26</borrowingDate>
       <borrowerID>81723bc3-d825-48fd-818e-bd2f5d6b32a4</borrowerID>

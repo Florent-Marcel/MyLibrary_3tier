@@ -1,11 +1,6 @@
 package be.iccbxl.poo.function;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
 import be.iccbxl.poo.data.Data;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
@@ -13,12 +8,9 @@ import be.iccbxl.poo.entities.Person;
 
 public class Function implements IFunction {
 	IData data;
-	static String f = "data\\save.xml";
 	
 	public Function() {
-		//data = new Data("data\\save.xml");
-		data = IData.dataLoad(f);
-		data.getPeople().get(0).borrows(data.getBooks().get(0));
+		data = new Data().dataLoad();
 	}
 
 	public List<Person> loadMembres() {
@@ -76,7 +68,7 @@ public class Function implements IFunction {
 
 	public void save() {
 		// TODO Auto-generated method stub
-		IData.dataWrite(f, data);
+		data.dataWrite();
 	}
 
 
