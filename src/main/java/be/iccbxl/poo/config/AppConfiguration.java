@@ -14,18 +14,23 @@ import be.iccbxl.poo.presentation.Presentation;
 @Configuration
 public class AppConfiguration {
 	
-	@Bean
-	public IPresentation getIprensentation() {
-		return new Presentation();
-	}
-	
-	@Bean
-	public ILogic getILogic() {
-		return new Logic();
-	}
-	
 	@Bean 
 	public IData getIData() {
 		return new Data("data\\save.xml");
 	}
+	
+	@Bean
+	public ILogic getILogic() {
+		Logic l = new Logic();
+		l.setData(getIData());
+		return l;
+	}
+	
+	@Bean
+	public IPresentation getIpresentation() {
+		Presentation p = new Presentation();
+		p.setLogic(getILogic());
+		return p;
+	}
+
 }

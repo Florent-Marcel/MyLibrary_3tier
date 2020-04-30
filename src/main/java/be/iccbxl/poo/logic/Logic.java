@@ -11,7 +11,6 @@ import be.iccbxl.poo.entities.Person;
 
 public class Logic implements ILogic {
 	
-	@Autowired
 	private IData data;
 	
 	

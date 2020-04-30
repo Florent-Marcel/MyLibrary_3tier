@@ -17,7 +17,6 @@ import be.iccbxl.poo.logic.Logic;
 
 public class Presentation implements IPresentation {
 	
-	@Autowired
 	private ILogic logic;
 	
 	private Scanner s;
