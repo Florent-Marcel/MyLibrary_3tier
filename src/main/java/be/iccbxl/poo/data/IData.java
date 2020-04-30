@@ -38,5 +38,7 @@ public interface IData {
 	
 	public void dataWrite();
 	
+	public boolean borrows(Person p, Book b);
+	
 	//public void writeXml();
 }

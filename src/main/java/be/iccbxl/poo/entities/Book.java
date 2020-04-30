@@ -35,11 +35,8 @@ public class Book {
 	@Attribute(name="language")
 	protected String language;
 	
-	@Element(required=false)
+	@Element(name="borrowerRef", required=false)
 	protected UUID borrowerID;
-	
-	@Element(required=false)
-	protected String borrowerName;
 	
 	public Book() {
 		// pour sérialiser
@@ -55,7 +52,6 @@ public class Book {
 		this.rentalPrice = 1.25;
 		this.borrowerID = null;
 		this.borrowingDate = null;
-		this.borrowerName="";
 	}
 	
 	public String getTitle() {
@@ -117,18 +113,12 @@ public class Book {
 	public UUID getBorrowerID() {
 		return borrowerID;
 	}
-	
-	public String getBorrowerName() {
-		return borrowerName;
-	}
 
 	public void setBorrower(Person borrower) {
 		if(borrower == null) {
 			this.borrowerID = null;
-			this.borrowerName = "";
 		} else {
 			this.borrowerID = borrower.getId();
-			this.borrowerName = borrower.getName();
 		}
 	}
 
@@ -140,7 +130,7 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", totalPages=" + totalPages
 				+ ", loanPeriod=" + loanPeriod + ", rentalPrice=" + rentalPrice + ", borrowingDate=" + borrowingDate
-				+ ", language=" + language + ", borrower=" + ((borrowerID!=null) ? borrowerName:null) + "]";
+				+ ", language=" + language + ", borrower=" + ((borrowerID!=null) ? borrowerID:null) + "]";
 	}
 
 	/**
@@ -171,4 +161,7 @@ public class Book {
 		this.language = book.language;
 	}
 	
+	public boolean isBorrowed() {
+		return borrowerID != null && borrowingDate !=null;
+	}
 }

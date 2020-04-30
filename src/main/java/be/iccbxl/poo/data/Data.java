@@ -174,6 +174,15 @@ public class Data implements IData {
 		f = new File(filename);
 		dataLoad();
 	}
+
+	@Override
+	public boolean borrows(Person p, Book b) {
+		if(p.canBorrows() && !b.isBorrowed()) {
+			p.borrows(b);
+			return true;
+		}
+		return false;
+	}
 	
 	/*public void writeXml() {
 		try {

@@ -32,7 +32,7 @@ public class GraphicNovel extends Book {
 	public String toString() {
 		return "GraphicNovel [cartoonist=" + cartoonist + ", color=" + color + ", id=" + id + ", title=" + title
 				+ ", author=" + author + ", totalPages=" + totalPages + ", loanPeriod=" + loanPeriod + ", rentalPrice="
-				+ rentalPrice + ", borrowingDate=" + borrowingDate + ", language=" + language + ", borrower=" + borrowerName
+				+ rentalPrice + ", borrowingDate=" + borrowingDate + ", language=" + language + ", borrower=" + borrowerID
 				+ "]";
 	}
 	

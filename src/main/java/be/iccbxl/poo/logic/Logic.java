@@ -80,6 +80,11 @@ public class Logic implements ILogic {
 		this.data = data;
 	}
 
+	@Override
+	public boolean borrows(Person p, Book b) {
+		return data.borrows(p, b);
+	}
+
 
 	
 

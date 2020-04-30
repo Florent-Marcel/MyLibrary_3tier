@@ -26,8 +26,12 @@ public interface ILogic {
 	
 	public List<Book> findByBook(String property, String value);
 	
+	public void save();
+	
+	public boolean borrows(Person p, Book b);
+	
 	//Logic
 	public int computeRemainingDays(Book b);
 	
-	public void save();
+	
 }

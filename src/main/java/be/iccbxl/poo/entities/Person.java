@@ -23,13 +23,13 @@ public class Person {
 	@Attribute(name="registrationDate")
 	private LocalDate registrationDate;
 	
-	@ElementList(inline = true, entry = "book", name="books", required=false)
-	private ArrayList<Book> books;
+	@ElementList(inline = true, entry = "bookRef", name="books", required=false)
+	private ArrayList<UUID> books;
 	
 	public Person() {
 		// pour sérialiser
 		if(books == null) {
-			books = new ArrayList<Book>();
+			books = new ArrayList<UUID>();
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class Person {
 		this.name = name;
 		this.maxBooks = 3;
 		this.registrationDate = LocalDate.now();
-		this.books = new ArrayList<Book>();
+		this.books = new ArrayList<UUID>();
 	}
 	
 	public String getName() {
@@ -69,7 +69,7 @@ public class Person {
 		return registrationDate;
 	}
 
-	public ArrayList<Book> getBooks() {
+	public ArrayList<UUID> getBooks() {
 		return books;
 	}
 
@@ -82,13 +82,13 @@ public class Person {
 	}
 
 	public void borrows(Book book) {
-		this.books.add(book);
+		this.books.add(book.getId());
 		book.setBorrower(this);
 		book.borrowingDate = LocalDate.now();
 	}
 
 	public void returns(Book book) {
-		this.books.remove(book);
+		this.books.remove(book.getId());
 		book.setBorrower(null);
 		book.borrowingDate = null;
 	}
@@ -96,6 +96,10 @@ public class Person {
 	public void updatePerson(Person p) {
 		this.name = p.getName();
 		this.maxBooks = p.getMaxBooks();
+	}
+	
+	public boolean canBorrows() {
+		return books.size() < maxBooks;
 	}
 	
 }

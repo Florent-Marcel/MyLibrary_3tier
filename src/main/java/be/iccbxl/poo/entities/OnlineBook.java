@@ -32,7 +32,7 @@ public class OnlineBook extends Book {
 	public String toString() {
 		return "OnlineBook [maxPeople=" + maxPeople + ", content=" + content + ", id=" + id + ", title=" + title
 				+ ", author=" + author + ", totalPages=" + totalPages + ", loanPeriod=" + loanPeriod + ", rentalPrice="
-				+ rentalPrice + ", borrowingDate=" + borrowingDate + ", language=" + language + ", borrower=" + borrowerName
+				+ rentalPrice + ", borrowingDate=" + borrowingDate + ", language=" + language + ", borrower=" + borrowerID
 				+ "]";
 	}
 	

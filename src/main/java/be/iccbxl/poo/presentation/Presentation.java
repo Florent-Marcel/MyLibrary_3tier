@@ -73,7 +73,11 @@ public class Presentation implements IPresentation {
 				case 6:
 					removeBook();
 					break;
-				
+					
+				case 7:
+					BorrowsBook();
+					break;
+					
 				default:
 					System.out.println("Commande inconnue.");
 			}
@@ -88,6 +92,7 @@ public class Presentation implements IPresentation {
 		System.out.println("4 - Afficher tous les livres.");
 		System.out.println("5 - Ajouter un livre.");
 		System.out.println("6 - Retirer un livre.");
+		System.out.println("7 - Emprunter un livre.");
 		System.out.println("0 - Quitter.");
 	}
 	
@@ -155,8 +160,9 @@ public class Presentation implements IPresentation {
 	}
 	
 	private void printBooks(List<Book> books) {
+		int i = 0;
 		for(Book b : logic.getBooks()) {
-			System.out.println("1.\tAuteur: " + b.getAuthor() + "\t\tTitre: " + b.getTitle() );
+			System.out.println(++i + ".\tAuteur: " + b.getAuthor() + "\t\tTitre: " + b.getTitle() );
 		}
 	}
 	
@@ -211,6 +217,38 @@ public class Presentation implements IPresentation {
 			
 		}
 		
+	}
+	
+	private void BorrowsBook() {
+		short choicePers, choiceBook;
+		Person p;
+		Book b;
+		
+		printPeople(logic.getPeople());
+		System.out.println("entrez le numéro de la personne qui emprunte: ");
+		
+		choicePers = (short) (nextShort() -1);
+		p = logic.getPeople().get(choicePers);
+		
+		if(choicePers >= 0 && choicePers < logic.getPeople().size()) {
+			printBooks(logic.getBooks());
+			System.out.println("Entrez le numéro du livre a emprunter: ");
+			
+			choiceBook = (short) (s.nextShort() -1);
+			b = logic.getBooks().get(choiceBook);
+			
+			if(choiceBook >= 0 && choiceBook < logic.getBooks().size()) {
+				if(logic.borrows(p, b)) {
+					System.out.println("Le livre " + b.getTitle() + " a été empruntré par " + p.getName());
+				} else {
+					System.out.println("Le livre a déja été emprunté ou la personne a dépassé son quota");
+				}
+			} else {
+				System.out.println("Le numéro entré est incorrect");
+			}
+		} else {
+			System.out.println("Le numéro entré est incorrect");
+		}
 	}
 
 }
