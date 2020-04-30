@@ -10,6 +10,12 @@
   <name>MyLibrary_3tier</name>
   <url>http://maven.apache.org</url>
   
+	<parent>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-parent</artifactId>
+	    <version>2.2.2.RELEASE</version>
+	</parent>
+
   <build>
     <pluginManagement>
         <plugins>
@@ -47,6 +53,28 @@
 	    <artifactId>simple-xml</artifactId>
 	    <version>2.7.1</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+	<!-- Spring Core -->
+        <!-- http://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.6.RELEASE</version>
+        </dependency>
+ 
+        <!-- Spring Context -->
+        <!-- http://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.2.6.RELEASE</version>
+        </dependency>
+        
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter</artifactId>
+		</dependency>
 
   </dependencies>
 </project>

@@ -34,7 +34,7 @@ public interface IData {
 	public List<Person> getPeople();
 	public List<Book> getBooks();
 	
-	public Data dataLoad();
+	public void dataLoad();
 	
 	public void dataWrite();
 	

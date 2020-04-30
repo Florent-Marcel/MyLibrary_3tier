@@ -1,16 +1,22 @@
 package be.iccbxl.poo.logic;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import be.iccbxl.poo.data.Data;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
 public class Logic implements ILogic {
-	IData data;
+	
+	@Autowired
+	private IData data;
+	
 	
 	public Logic() {
-		data = new Data().dataLoad();
+		//data = new Data("");
 	}
 
 	public List<Person> loadMembres() {

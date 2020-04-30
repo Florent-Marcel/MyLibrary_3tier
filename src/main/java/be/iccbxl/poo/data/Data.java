@@ -30,8 +30,8 @@ public class Data implements IData {
 	
 	private Serializer serial;
 	
-	public Data() {
-		this.filename = "data\\save.xml";
+	public Data(String filename) {
+		this.filename = filename;
 		f = new File(filename);
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
@@ -44,8 +44,18 @@ public class Data implements IData {
 		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));*/
 		
 		serial = new Persister(new MyMatcher());
+		this.dataLoad();
 	}
 	
+	public Data() {
+		if(books == null) {
+			books = new ArrayList<Book>();
+		}
+		if(people == null) {
+			people = new ArrayList<Person>();
+		}
+	}
+
 
 	public boolean deletePerson(UUID uuid) {
 		// TODO Auto-generated method stub
@@ -138,13 +148,13 @@ public class Data implements IData {
 		return books;
 	}
 	
-	public Data dataLoad() {
-		
+	public void dataLoad() {
 		try {
-			 return serial.read(Data.class, f);
+			 IData tmpData = serial.read(Data.class, f);
+			 this.books = tmpData.getBooks();
+			 this.people = tmpData.getPeople();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
 	}
 	

@@ -5,12 +5,18 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import be.iccbxl.poo.config.AppConfiguration;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 import be.iccbxl.poo.logic.ILogic;
 import be.iccbxl.poo.logic.Logic;
 
 public class Presentation implements IPresentation {
+	
+	@Autowired
 	private ILogic logic;
 	
 	private Scanner s;
@@ -20,8 +26,9 @@ public class Presentation implements IPresentation {
 	
 	
 	public Presentation() {
+		//AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
 		s = new Scanner(System.in);
-		logic = new Logic();
+		//logic = new Logic();
 		
 		
 	}
