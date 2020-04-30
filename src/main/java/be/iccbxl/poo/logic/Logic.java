@@ -1,4 +1,4 @@
-package be.iccbxl.poo.function;
+package be.iccbxl.poo.logic;
 
 import java.util.List;
 import be.iccbxl.poo.data.Data;
@@ -6,10 +6,10 @@ import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
-public class Function implements IFunction {
+public class Logic implements ILogic {
 	IData data;
 	
-	public Function() {
+	public Logic() {
 		data = new Data().dataLoad();
 	}
 

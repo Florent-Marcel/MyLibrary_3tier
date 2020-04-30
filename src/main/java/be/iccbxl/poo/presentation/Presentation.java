@@ -7,11 +7,11 @@ import java.util.UUID;
 
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
-import be.iccbxl.poo.function.Function;
-import be.iccbxl.poo.function.IFunction;
+import be.iccbxl.poo.logic.ILogic;
+import be.iccbxl.poo.logic.Logic;
 
 public class Presentation implements IPresentation {
-	private IFunction func;
+	private ILogic logic;
 	
 	private Scanner s;
 	
@@ -21,7 +21,7 @@ public class Presentation implements IPresentation {
 	
 	public Presentation() {
 		s = new Scanner(System.in);
-		func = new Function();
+		logic = new Logic();
 		
 		
 	}
@@ -35,11 +35,11 @@ public class Presentation implements IPresentation {
 			
 			switch(choix) {
 				case 0:
-					func.save();
+					logic.save();
 					break;
 				
 				case 1:
-					printPeople(func.getPeople());
+					printPeople(logic.getPeople());
 					break;
 				
 				case 2:
@@ -51,7 +51,7 @@ public class Presentation implements IPresentation {
 					break;
 					
 				case 4:
-					printBooks(func.getBooks());
+					printBooks(logic.getBooks());
 					break;
 					
 				case 5:
@@ -105,7 +105,7 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
 		
-		func.register(new Person(UUID.randomUUID(), name));
+		logic.register(new Person(UUID.randomUUID(), name));
 	}
 	
 	private void removeMember() {
@@ -115,7 +115,7 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
 		
-		pf = func.findByPerson("name", name);
+		pf = logic.findByPerson("name", name);
 		
 		if(pf.size() == 0) {
 			System.out.println("Aucune personne trouvée");
@@ -132,7 +132,7 @@ public class Presentation implements IPresentation {
 					ptr = pf.get(choice);
 				}
 			}
-			if(ptr != null && func.unRegister(ptr)) {
+			if(ptr != null && logic.unRegister(ptr)) {
 				System.out.println("Le membre a été supprimé avec succès");
 			} else {
 				System.out.println("Il y a eu une erreur lors de la suppresion");
@@ -143,7 +143,7 @@ public class Presentation implements IPresentation {
 	}
 	
 	private void printBooks(List<Book> books) {
-		for(Book b : func.getBooks()) {
+		for(Book b : logic.getBooks()) {
 			System.out.println("1.\tAuteur: " + b.getAuthor() + "\t\tTitre: " + b.getTitle() );
 		}
 	}
@@ -164,7 +164,7 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nombre de pages: ");
 		nbPages = nextShort();
 		
-		func.register(new Book(UUID.randomUUID(), title, author, nbPages, language));
+		logic.register(new Book(UUID.randomUUID(), title, author, nbPages, language));
 	}
 	
 	private void removeBook() {
@@ -174,7 +174,7 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le titre: ");
 		title = s.nextLine();
 		
-		bf = func.findByBook("title", title);
+		bf = logic.findByBook("title", title);
 		
 		if(bf.size() == 0) {
 			System.out.println("Aucun livre trouvé");
@@ -191,7 +191,7 @@ public class Presentation implements IPresentation {
 					btr = bf.get(choice);
 				}
 			}
-			if(btr != null && func.unRegister(btr)) {
+			if(btr != null && logic.unRegister(btr)) {
 				System.out.println("Le livre a été supprimé avec succès");
 			} else {
 				System.out.println("Il y a eu une erreur lors de la suppresion");

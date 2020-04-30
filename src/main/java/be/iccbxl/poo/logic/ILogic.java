@@ -1,11 +1,11 @@
-package be.iccbxl.poo.function;
+package be.iccbxl.poo.logic;
 
 import java.util.List;
 
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
-public interface IFunction {
+public interface ILogic {
 	//Data access
 	public List<Person> loadMembres();
 	public List<Book> loadBooks();

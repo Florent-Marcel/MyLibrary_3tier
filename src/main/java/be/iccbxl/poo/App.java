@@ -1,5 +1,6 @@
 package be.iccbxl.poo;
 
+import be.iccbxl.poo.presentation.IPresentation;
 import be.iccbxl.poo.presentation.Presentation;
 
 /**
@@ -12,7 +13,7 @@ public class App
     {
         System.out.println( "Hello World!" );
         
-        Presentation presentation = new Presentation();
+        IPresentation presentation = new Presentation();
         
         presentation.run();
         
