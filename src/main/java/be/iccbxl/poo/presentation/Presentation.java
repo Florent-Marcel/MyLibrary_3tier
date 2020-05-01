@@ -42,7 +42,6 @@ public class Presentation implements IPresentation {
 		do {
 			showMenu();
 			choix = nextInt();
-			System.out.println("");
 			
 			switch(choix) {
 				case 0:
@@ -97,10 +96,12 @@ public class Presentation implements IPresentation {
 	}
 	
 	private void printPeople(List<Person> people) {
+		System.out.println("");
 		int i = 0;
 		for(Person p : people) {
 			System.out.println(++i + ".\tNom: " + p.getName() + "\tInscrit le: " + p.getRegistrationDate());
 		}
+		System.out.println("");
 	}
 	
 	private int nextInt() {
@@ -122,48 +123,58 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
 		
-		logic.register(new Person(UUID.randomUUID(), name));
+		if(logic.register(new Person(UUID.randomUUID(), name))) {
+			System.out.println(name + " a bien été ajouté");
+		} else {
+			System.out.println(name + " n'a pas pu être ajoute");
+		}
 	}
 	
 	private void removeMember() {
+		Person p = askPerson();
+		if(p != null && logic.unRegister(p)) {
+			System.out.println("Le membre a été supprimé avec succès");
+		} else {
+			System.out.println("La suppression n'a pas pu être éxecutée");
+		}
+	}
+	
+	private Person askPerson() {
 		String name;
-		List<Person> pf = new ArrayList<Person>(); // people found
-		Person ptr = null; // person to remove
+		List<Person> pers = new ArrayList<Person>(); // people found
+		Person persChoice = null; // person to remove
+		printPeople(logic.getPeople());
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
 		
-		pf = logic.findByPerson("name", name);
+		pers = logic.findByPerson("name", name);
 		
-		if(pf.size() == 0) {
+		if(pers.size() == 0) {
 			System.out.println("Aucune personne trouvée");
 		} else {
-			if(pf.size() == 1) {
-				ptr = pf.get(0);
+			if(pers.size() == 1) {
+				return pers.get(0);
 			} else {
-				System.out.println("Entrez le numéro de la personne a retirer: ");
-				printPeople(pf);
+				System.out.println("Entrez le numéro de la personne: ");
+				printPeople(pers);
 				
 				int choice = nextInt() - 1;
 				
-				if(choice < pf.size() && choice >= 0) {
-					ptr = pf.get(choice);
+				if(choice < pers.size() && choice >= 0) {
+					return pers.get(choice);
 				}
 			}
-			if(ptr != null && logic.unRegister(ptr)) {
-				System.out.println("Le membre a été supprimé avec succès");
-			} else {
-				System.out.println("Il y a eu une erreur lors de la suppresion");
-			}
-			
 		}
-		
+		return null;
 	}
 	
 	private void printBooks(List<Book> books) {
+		System.out.println("");
 		int i = 0;
 		for(Book b : logic.getBooks()) {
 			System.out.println(++i + ".\tAuteur: " + b.getAuthor() + "\t\tTitre: " + b.getTitle() );
 		}
+		System.out.println("");
 	}
 	
 	private void addBook() {
@@ -182,72 +193,77 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nombre de pages: ");
 		nbPages = nextShort();
 		
-		logic.register(new Book(UUID.randomUUID(), title, author, nbPages, language));
+		if(logic.register(new Book(UUID.randomUUID(), title, author, nbPages, language))) {
+			System.out.println(title + " a bien été ajoute");
+		} else {
+			System.out.println(title + " n'a pas pu être ajouté");
+		}
 	}
 	
 	private void removeBook() {
+		Book book = askBook();
+		if(book != null && logic.unRegister(book)) {
+			System.out.println("Le livre a été supprimé avec succès");
+		} else {
+			System.out.println("La suppression n'a pas pu être éxecutée");
+		}
+	}
+	
+	
+	private Book askBook() {
 		String title;
-		List<Book> bf = new ArrayList<Book>(); // people found
-		Book btr = null; // person to remove
+		List<Book> books = new ArrayList<Book>(); // people found
+		Book bookChoice = null; // person to remove
+		printBooks(logic.getBooks());
 		System.out.println("Veuillez entrer le titre: ");
 		title = s.nextLine();
 		
-		bf = logic.findByBook("title", title);
+		books = logic.findByBook("title", title);
 		
-		if(bf.size() == 0) {
+		if(books.size() == 0) {
 			System.out.println("Aucun livre trouvé");
 		} else {
-			if(bf.size() == 1) {
-				btr = bf.get(0);
+			if(books.size() == 1) {
+				return books.get(0);
 			} else {
-				System.out.println("Entrez le numéro du livre a retirer: ");
-				printBooks(bf);
+				System.out.println("Entrez le numéro du livre: ");
+				printBooks(books);
 				
 				int choice = nextInt() - 1;
 				
-				if(choice < bf.size() && choice >= 0) {
-					btr = bf.get(choice);
+				if(choice < books.size() && choice >= 0) {
+					return books.get(choice);
 				}
 			}
-			if(btr != null && logic.unRegister(btr)) {
-				System.out.println("Le livre a été supprimé avec succès");
-			} else {
-				System.out.println("Il y a eu une erreur lors de la suppresion");
-			}
-			
 		}
-		
+		return null;
 	}
 	
 	private void BorrowsBook() {
-		short choicePers, choiceBook;
 		Person p;
 		Book b;
 		
-		printPeople(logic.getPeople());
-		System.out.println("entrez le numéro de la personne qui emprunte: ");
+		System.out.println("Choisissez la personne qui emprunte: ");
 		
-		choicePers = (short) (nextShort() -1);
-		p = logic.getPeople().get(choicePers);
+		p = askPerson();
 		
-		if(choicePers >= 0 && choicePers < logic.getPeople().size()) {
+		if(p != null) {
 			printBooks(logic.getBooks());
-			System.out.println("Entrez le numéro du livre a emprunter: ");
+			System.out.println("Choisissez le livre a emprunter: ");
 			
-			choiceBook = (short) (s.nextShort() -1);
-			b = logic.getBooks().get(choiceBook);
+			b = askBook();
 			
-			if(choiceBook >= 0 && choiceBook < logic.getBooks().size()) {
+			if(b != null) {
 				if(logic.borrows(p, b)) {
 					System.out.println("Le livre " + b.getTitle() + " a été empruntré par " + p.getName());
 				} else {
 					System.out.println("Le livre a déja été emprunté ou la personne a dépassé son quota");
 				}
 			} else {
-				System.out.println("Le numéro entré est incorrect");
+				System.out.println("L'emprunt n'a pas pu être éxecuté.");
 			}
 		} else {
-			System.out.println("Le numéro entré est incorrect");
+			System.out.println("L'emprunt n'a pas pu être éxecuté.");
 		}
 	}
 
