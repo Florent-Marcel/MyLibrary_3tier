@@ -26,21 +26,25 @@ public class Person {
 	@ElementList(inline = true, entry = "bookRef", name="books", required=false)
 	private ArrayList<UUID> books;
 	
+	public Person(UUID id, String name, byte maxBooks, LocalDate registrationDate, ArrayList<UUID> books) {
+		this.id = id;
+		this.name = name;
+		this.maxBooks = maxBooks;
+		this.registrationDate = registrationDate;
+		this.books = books;
+	}
+	
+	public Person(UUID id, String name) {
+		this(id, name, (byte)3, LocalDate.now(), new ArrayList<UUID>());
+	}
+	
 	public Person() {
 		// pour sérialiser
 		if(books == null) {
 			books = new ArrayList<UUID>();
 		}
 	}
-	
-	public Person(UUID id, String name) {
-		this.id = id;
-		this.name = name;
-		this.maxBooks = 3;
-		this.registrationDate = LocalDate.now();
-		this.books = new ArrayList<UUID>();
-	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -76,9 +80,7 @@ public class Person {
 	@Override
 	public String toString() {
 		final int maxLen = 3;
-		return "Person [id=" + id + ", name=" + name + ", maxBooks=" + maxBooks + ", registrationDate="
-				+ registrationDate + ", books="
-				+ (books != null ? books.subList(0, Math.min(books.size(), maxLen)) : null) + "]";
+		return "Nom: " + name + "\tInscrit le: " + registrationDate + "\tNumber of books borrowed: " + books.size();
 	}
 
 	public void borrows(Book book) {

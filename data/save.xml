@@ -1,2 +1,9 @@
-id;name;maxBooks;registrationDate;booksBorrowed
-fc797464-9890-417e-9698-91e7735a982d;Gui;3;02-05-20;[fd848ef2-f265-4c07-b5dc-4a8fc46ae279, 4e12c871-ef6d-4548-9054-40d82a9caf5f];717bc5f1-c1c1-40f3-980b-6848ef1bb080;Anis;3;02-05-20;[];2bbf7287-a3a6-41b4-92b3-bf729863a36d;Max;3;02-05-20;[]
+<data>
+	<person id="cb06098f-fadc-4ba6-aa10-cfdb5a658f9a" name="Max" maxBooks="3" registrationDate="2020-04-26"/>
+	<person id="56599402-2511-4688-a322-4a4168d97cc6" name="Pierre" maxBooks="3" registrationDate="2020-04-26"/>
+	<person id="0d0bf70c-cd88-4801-ad5e-b76c84ebf504" name="Gui" maxBooks="3" registrationDate="2020-04-30"/>
+	<book id="97fd7760-c948-4b42-bd43-3222c941c939" title="Je suis une légende" author="Richard Matheson" totalPages="200" loanPeriod="14" rentalPrice="1.25" language="Français">
+	</book>
+	<book id="97fd7760-c948-4b42-bd43-3222c941c939" title="Je suis une légende" author="Richard Matheson" totalPages="200" loanPeriod="14" rentalPrice="1.25" language="Français"/>
+	<book id="2ef33244-0d2f-4658-8dbd-c75cb01e652a" title="Des fleurs pour Algernon" author="Daniel Keyes" totalPages="400" loanPeriod="14" rentalPrice="1.25" language="Français"/>
+</data> 

@@ -1,5 +1,7 @@
 package be.iccbxl.poo;
 
+import java.util.Locale;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,6 +15,7 @@ import be.iccbxl.poo.presentation.Presentation;
 public class App implements CommandLineRunner{
     public static void main( String[] args ) 
     {
+    	
         System.out.println( "Hello World!" );
         
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);

@@ -43,6 +43,7 @@ public class Book {
 	}
 	
 	public Book(UUID id, String title, String author, short totalPages, String language) {
+		this(id, title, author, totalPages, language, (byte)14, 1.25, null, null);
 		this.id = id;
 		this.title = title;
 		this.author = author;
@@ -54,6 +55,19 @@ public class Book {
 		this.borrowingDate = null;
 	}
 	
+	public Book(UUID id, String title, String author, short totalPages, String language, byte loanPeriod, double rentalPrice,
+			LocalDate borrowingDate, UUID borrowerID) {
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.totalPages = totalPages;
+		this.loanPeriod = loanPeriod;
+		this.rentalPrice = rentalPrice;
+		this.borrowingDate = borrowingDate;
+		this.language = language;
+		this.borrowerID = borrowerID;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -128,9 +142,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", totalPages=" + totalPages
-				+ ", loanPeriod=" + loanPeriod + ", rentalPrice=" + rentalPrice + ", borrowingDate=" + borrowingDate
-				+ ", language=" + language + ", borrower=" + ((borrowerID!=null) ? borrowerID:null) + "]";
+		return "Auteur: " + author + "\tTitre: " + title + "\tborrowed: " + ((borrowerID!=null) ? "yes on " + borrowingDate : "no");
 	}
 
 	/**

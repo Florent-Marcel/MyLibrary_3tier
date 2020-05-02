@@ -1,7 +1,10 @@
 package be.iccbxl.poo.presentation;
 
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -38,6 +41,12 @@ public class Presentation implements IPresentation {
 	}
 
 	public void run() {
+		try {
+			System.setOut(new PrintStream(System.out, true, "ibm850"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int choix = 0;
 		do {
 			showMenu();
@@ -99,7 +108,7 @@ public class Presentation implements IPresentation {
 		System.out.println("");
 		int i = 0;
 		for(Person p : people) {
-			System.out.println(++i + ".\tNom: " + p.getName() + "\tInscrit le: " + p.getRegistrationDate());
+			System.out.printf("%-5s%-5s%-20s - %-12s%-10s - %-28s%-2s\n", ++i + ".", "nom: ", p.getName(), "inscrit le: ", p.getRegistrationDate(), "nombre de livres empruntés: ", p.getBooks().size());//(++i + ". " + p);
 		}
 		System.out.println("");
 	}
@@ -172,8 +181,9 @@ public class Presentation implements IPresentation {
 		System.out.println("");
 		int i = 0;
 		for(Book b : logic.getBooks()) {
-			System.out.println(++i + ".\tAuteur: " + b.getAuthor() + "\t\tTitre: " + b.getTitle() );
+			System.out.printf("%-5s%-8s%-20s - %-7s%-30s - %-10s%-17s\n", ++i + ".", "Auteur: ", b.getAuthor(), "Titre: ", b.getTitle(), "emprunté: ", ((b.getBorrowerID()!=null) ? "oui le " + b.getBorrowingDate() : "non"));
 		}
+		
 		System.out.println("");
 	}
 	
