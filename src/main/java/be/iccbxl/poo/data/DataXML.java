@@ -29,22 +29,10 @@ public class DataXML extends DataFile {
 		books = new ArrayList<Book>();
 		
 		this.setFilename(filename);
-		
-		/*people.add(new Person(UUID.randomUUID(), "Gui"));
-		people.add(new Person(UUID.randomUUID(), "Anis"));
-		people.add(new Person(UUID.randomUUID(), "Max"));
-		
-		books.add(new Book(UUID.randomUUID(), "Je suis une légende", "Richard Matheson", (short)200, "Français"));
-		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));*/
 	}
 	
 	public DataXML() {
-		if(books == null) {
-			books = new ArrayList<Book>();
-		}
-		if(people == null) {
-			people = new ArrayList<Person>();
-		}
+		super();
 	}
 
 

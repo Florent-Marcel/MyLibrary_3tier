@@ -41,12 +41,6 @@ public class Presentation implements IPresentation {
 	}
 
 	public void run() {
-		try {
-			System.setOut(new PrintStream(System.out, true, "ibm850"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		int choix = 0;
 		do {
 			showMenu();

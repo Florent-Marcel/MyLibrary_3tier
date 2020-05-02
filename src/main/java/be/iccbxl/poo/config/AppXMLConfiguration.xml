@@ -7,6 +7,8 @@
 
 	<bean id="IData" class="be.iccbxl.poo.data.DataXML" >
 		<property name="filename" value="data\\save.xml" />
+	<!-- bean id="IData" class="be.iccbxl.poo.data.DataCSV" >
+		<property name="folder" value="data" /-->
 	</bean>
 	<bean id="ILogic" class="be.iccbxl.poo.logic.Logic" >
 		<property name="data" ref="IData"></property>

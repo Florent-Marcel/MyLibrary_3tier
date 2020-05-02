@@ -35,19 +35,11 @@ public class DataCSV extends DataFile {
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
 		
-		/*
-		// For testing
-		people.add(new Person(UUID.randomUUID(), "Gui"));
-		people.add(new Person(UUID.randomUUID(), "Anis"));
-		people.add(new Person(UUID.randomUUID(), "Max"));
-		
-		books.add(new Book(UUID.randomUUID(), "Je suis une légende", "Richard Matheson", (short)200, "Français"));
-		books.add(new Book(UUID.randomUUID(), "Des fleurs pour Algernon", "Daniel Keyes", (short)400, "Français"));
-		
-		people.get(0).borrows(books.get(0));
-		people.get(0).borrows(books.get(1));*/
-		
 		this.setFolder(folder);
+	}
+	
+	public DataCSV() {
+		super();
 	}
 	
 	@Override
@@ -70,9 +62,8 @@ public class DataCSV extends DataFile {
 		
 		fPeople = new File(filenamePeople);
 		fBooks =  new File(filenameBooks);
+		
 		this.dataLoad();
-		
-		
 	}
 	
 	private void writeMembers() {
@@ -88,7 +79,7 @@ public class DataCSV extends DataFile {
 		
 		try {
 			try {
-				Charset charset = Charset.forName("Cp1252");
+				Charset charset = Charset.forName("UTF-8");
 				printer = CSVFormat.EXCEL
 						.withDelimiter(';').print(fPeople, charset);
 				
@@ -183,7 +174,7 @@ public class DataCSV extends DataFile {
 		
 		try {
 			try {
-				Charset charset = Charset.forName("Cp1252");
+				Charset charset = Charset.forName("UTF-8");
 				printer = CSVFormat.EXCEL
 						.withDelimiter(';').print(fBooks, charset);
 				

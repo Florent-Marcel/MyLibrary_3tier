@@ -19,6 +19,14 @@ public abstract class DataFile implements IData{
 	@ElementList(inline = true, entry = "book", required=false)
 	protected List<Book> books;
 	
+	public DataFile() {
+		if(books == null) {
+			books = new ArrayList<Book>();
+		}
+		if(people == null) {
+			people = new ArrayList<Person>();
+		}
+	}
 	public boolean deletePerson(UUID uuid) {
 		// TODO Auto-generated method stub
 		return false;

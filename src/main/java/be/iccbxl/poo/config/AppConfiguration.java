@@ -17,8 +17,8 @@ public class AppConfiguration {
 	
 	@Bean 
 	public IData getIData() {
-		//return new DataXML("data\\save.xml");
-		return new DataCSV("data");
+		return new DataXML("data\\save.xml");
+		//return new DataCSV("data");
 	}
 	
 	@Bean

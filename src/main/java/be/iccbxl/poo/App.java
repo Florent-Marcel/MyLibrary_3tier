@@ -16,7 +16,7 @@ public class App implements CommandLineRunner{
     public static void main( String[] args ) 
     {
     	
-        System.out.println( "Hello World!" );
+        System.out.println( "Bonjour!" );
         
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
         //ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("be\\iccbxl\\poo\\config\\AppXMLConfiguration.xml");
