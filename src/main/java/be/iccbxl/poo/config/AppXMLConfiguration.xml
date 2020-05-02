@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
 
-	<bean id="IData" class="be.iccbxl.poo.data.Data" >
+	<bean id="IData" class="be.iccbxl.poo.data.DataXML" >
 		<property name="filename" value="data\\save.xml" />
 	</bean>
 	<bean id="ILogic" class="be.iccbxl.poo.logic.Logic" >

@@ -4,7 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import be.iccbxl.poo.data.Data;
+import be.iccbxl.poo.data.DataCSV;
+import be.iccbxl.poo.data.DataXML;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.logic.ILogic;
 import be.iccbxl.poo.logic.Logic;
@@ -16,7 +17,8 @@ public class AppConfiguration {
 	
 	@Bean 
 	public IData getIData() {
-		return new Data("data\\save.xml");
+		//return new DataXML("data\\save.xml");
+		return new DataCSV("data");
 	}
 	
 	@Bean

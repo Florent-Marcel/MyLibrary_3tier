@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import be.iccbxl.poo.data.Data;
+import be.iccbxl.poo.data.DataXML;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
@@ -16,14 +16,6 @@ public class Logic implements ILogic {
 	
 	public Logic() {
 		//data = new Data("");
-	}
-
-	public List<Person> loadMembres() {
-		return data.loadPeople();
-	}
-
-	public List<Book> loadBooks() {
-		return data.loadBooks();
 	}
 
 	public boolean register(Person p) {

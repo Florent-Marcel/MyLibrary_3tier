@@ -7,8 +7,6 @@ import be.iccbxl.poo.entities.Person;
 
 public interface ILogic {
 	//Data access
-	public List<Person> loadMembres();
-	public List<Book> loadBooks();
 	
 	public boolean register(Person p);
 	public boolean register(Book b);

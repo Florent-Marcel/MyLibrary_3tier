@@ -16,9 +16,6 @@ public interface IData {
 	public List<Person> findByPerson(String property, String value);
 	public List<Book> findByBook(String property, String value);
 	
-	public List<Person> loadPeople();
-	public List<Book> loadBooks();
-	
 	public boolean deletePerson(UUID uuid);
 	public boolean delete(Person p);
 	
