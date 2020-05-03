@@ -1,16 +1,12 @@
 package be.iccbxl.poo.data;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import org.simpleframework.xml.ElementList;
-import org.simpleframework.xml.core.Persister;
-
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
-import be.iccbxl.poo.matcher.MyMatcher;
 
 public abstract class DataFile implements IData{
 	@ElementList(inline = true, entry = "person", required=false)
@@ -27,6 +23,7 @@ public abstract class DataFile implements IData{
 			people = new ArrayList<Person>();
 		}
 	}
+	
 	public boolean deletePerson(UUID uuid) {
 		// TODO Auto-generated method stub
 		return false;
@@ -95,6 +92,13 @@ public abstract class DataFile implements IData{
 					bookFound.add(b);
 				}
 			}
+		} else if(prop.equals("id")) {
+			for(Book b : books) {
+				if(b.getId().toString().equals(value)) {
+					bookFound.add(b);
+					System.out.println("ok");
+				}
+			}
 		}
 		// TODO manage others properties
 		return bookFound;
@@ -111,6 +115,24 @@ public abstract class DataFile implements IData{
 	public boolean borrows(Person p, Book b) {
 		if(p.canBorrows() && !b.isBorrowed()) {
 			p.borrows(b);
+			b.borrows(p);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean returns(Person p, Book b) {
+		if(p == null) {
+			throw new NullPointerException("Person p is null");
+		} else if( b ==null) {
+			throw new NullPointerException("Book b is null");
+		}
+		System.out.println(p.getBooks());
+		System.out.println(b.getId());
+		
+		if(p.getBooks().contains(b.getId()) && b.getBorrowerID() != null && b.getBorrowerID().equals(p.getId())) {
+			p.unsetBorrow(b);
+			b.unsetBorrows();
 			return true;
 		}
 		return false;

@@ -28,6 +28,8 @@ public interface ILogic {
 	
 	public boolean borrows(Person p, Book b);
 	
+	public boolean returns(Person p, Book b);
+	
 	//Logic
 	public int computeRemainingDays(Book b);
 	

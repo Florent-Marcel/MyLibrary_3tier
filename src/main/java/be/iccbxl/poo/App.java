@@ -1,15 +1,11 @@
 package be.iccbxl.poo;
 
-import java.util.Locale;
-
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import be.iccbxl.poo.config.AppConfiguration;
 import be.iccbxl.poo.presentation.IPresentation;
-import be.iccbxl.poo.presentation.Presentation;
 
 
 public class App implements CommandLineRunner{
@@ -24,6 +20,7 @@ public class App implements CommandLineRunner{
         
         presentation.run();
         
+        ctx.close();
         System.out.println( "Au revoir !" );
     }
 

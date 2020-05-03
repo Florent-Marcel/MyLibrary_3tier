@@ -2,9 +2,6 @@ package be.iccbxl.poo.logic;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import be.iccbxl.poo.data.DataXML;
 import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
@@ -72,12 +69,13 @@ public class Logic implements ILogic {
 		this.data = data;
 	}
 
-	@Override
 	public boolean borrows(Person p, Book b) {
 		return data.borrows(p, b);
 	}
 
-
+	public boolean returns(Person p, Book b) {
+		return data.returns(p, b);
+	}
 	
 
 }

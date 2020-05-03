@@ -1,7 +1,6 @@
 package be.iccbxl.poo.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import be.iccbxl.poo.data.DataCSV;

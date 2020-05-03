@@ -135,6 +135,16 @@ public class Book {
 			this.borrowerID = borrower.getId();
 		}
 	}
+	
+	public void borrows(Person borrower) {
+		setBorrower(borrower);
+		setBorrowingDate(LocalDate.now());
+	}
+	
+	public void unsetBorrows() {
+		this.borrowerID = null;
+		this.borrowingDate = null;
+	}
 
 	public UUID getId() {
 		return id;

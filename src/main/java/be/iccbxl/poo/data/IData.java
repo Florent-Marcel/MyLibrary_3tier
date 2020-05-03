@@ -1,15 +1,10 @@
 package be.iccbxl.poo.data;
 
-import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
-import be.iccbxl.poo.matcher.MyMatcher;
 
 public interface IData {
 	
@@ -36,6 +31,8 @@ public interface IData {
 	public void dataWrite();
 	
 	public boolean borrows(Person p, Book b);
+	
+	public boolean returns(Person p, Book b);
 	
 	//public void writeXml();
 }

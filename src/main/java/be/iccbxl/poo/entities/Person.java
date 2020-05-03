@@ -79,20 +79,19 @@ public class Person {
 
 	@Override
 	public String toString() {
-		final int maxLen = 3;
 		return "Nom: " + name + "\tInscrit le: " + registrationDate + "\tNumber of books borrowed: " + books.size();
 	}
 
 	public void borrows(Book book) {
 		this.books.add(book.getId());
-		book.setBorrower(this);
-		book.borrowingDate = LocalDate.now();
+		//book.setBorrower(this);
+		//book.borrowingDate = LocalDate.now();
 	}
 
-	public void returns(Book book) {
+	public void unsetBorrow(Book book) {
 		this.books.remove(book.getId());
-		book.setBorrower(null);
-		book.borrowingDate = null;
+		//book.setBorrower(null);
+		//book.borrowingDate = null;
 	}
 	
 	public void updatePerson(Person p) {
@@ -102,6 +101,10 @@ public class Person {
 	
 	public boolean canBorrows() {
 		return books.size() < maxBooks;
+	}
+	
+	public boolean isBorrower() {
+		return books.size() > 0;
 	}
 	
 }

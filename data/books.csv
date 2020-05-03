@@ -1,4 +1,4 @@
 id;title;author;totalPages;language;loanPeriod;rentalPrice;borrowingDate;borrowerID
-bfa1d9c9-7b77-4456-9cf9-3ef6c189911b;Je suis une légende;Richard Matheson;200;Français;14;1.25;02-05-2020;123e4cc2-3ffe-43bd-bf73-33e26255ac3c
-8aca4d0d-e3ca-45cd-bc96-bcc11d73610e;Des fleurs pour Algernon;Daniel Keyes;400;Français;14;1.25;02-05-2020;123e4cc2-3ffe-43bd-bf73-33e26255ac3c
-d1c5758a-fd9d-4f28-9c65-bcaf9e96dbcb;Le Trône de fer;George R. R. Martin;700;Français;14;1.25;null;null
+3cb5e928-f275-4071-afe8-8f327f7892ba;Je suis une légende;Richard Matheson;200;Français;14;1.25;03-05-2020;a7ff798a-b9b0-489d-aaa7-9a8dea13f926
+aa8fcfda-44e9-4817-9b9b-7acdd2118c11;Des fleurs pour Algernon;Daniel Keyes;400;Français;14;1.25;03-05-2020;a7ff798a-b9b0-489d-aaa7-9a8dea13f926
+d1c5758a-fd9d-4f28-9c65-bcaf9e96dbcb;Le Trône de fer;George R. R. Martin;700;Français;14;1.25;03-05-2020;0ef1c3e8-4baa-43cc-96b5-2111b86cdbad

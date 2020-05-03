@@ -50,12 +50,10 @@ public class PersonTest {
 	}
 
 	@Test
-	public void testReturns() {
+	public void testUnsetBorrow() {
 		person.borrows(book);
 		
-		person.returns(book);
+		person.unsetBorrow(book);
 		assertEquals(0, person.getBooks().size());
-		assertNull(book.getBorrowerID());
-		assertNull(book.getBorrowingDate());
 	}
 }

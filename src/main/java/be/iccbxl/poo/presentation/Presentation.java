@@ -1,32 +1,19 @@
 package be.iccbxl.poo.presentation;
 
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import be.iccbxl.poo.config.AppConfiguration;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 import be.iccbxl.poo.logic.ILogic;
-import be.iccbxl.poo.logic.Logic;
 
 public class Presentation implements IPresentation {
 	
 	private ILogic logic;
 	
 	private Scanner s;
-	
-	private String message;
-	
-	
 	
 	public void setLogic(ILogic logic) {
 		this.logic = logic;
@@ -79,6 +66,15 @@ public class Presentation implements IPresentation {
 				case 7:
 					BorrowsBook();
 					break;
+				
+				case 8:
+					returnBook();
+					break;
+				
+				case 9:
+					logic.save();
+					System.out.println("Les données ont été sauvegardées");
+					break;
 					
 				default:
 					System.out.println("Commande inconnue.");
@@ -88,14 +84,16 @@ public class Presentation implements IPresentation {
 	}
 	
 	private void showMenu() {
-		System.out.println("\n1 - Afficher tous les membres.");
-		System.out.println("2 - Ajouter un membre.");
-		System.out.println("3 - Retirer un membre.");
-		System.out.println("4 - Afficher tous les livres.");
-		System.out.println("5 - Ajouter un livre.");
-		System.out.println("6 - Retirer un livre.");
-		System.out.println("7 - Emprunter un livre.");
-		System.out.println("0 - Quitter.");
+		System.out.println("\n1  - Afficher tous les membres.");
+		System.out.println("2  - Ajouter un membre.");
+		System.out.println("3  - Retirer un membre.");
+		System.out.println("4  - Afficher tous les livres.");
+		System.out.println("5  - Ajouter un livre.");
+		System.out.println("6  - Retirer un livre.");
+		System.out.println("7  - Emprunter un livre.");
+		System.out.println("8  - Retourner un livre.");
+		System.out.println("9  - Sauvegarder les données");
+		System.out.println("0  - Quitter.");
 	}
 	
 	private void printPeople(List<Person> people) {
@@ -145,7 +143,6 @@ public class Presentation implements IPresentation {
 	private Person askPerson() {
 		String name;
 		List<Person> pers = new ArrayList<Person>(); // people found
-		Person persChoice = null; // person to remove
 		printPeople(logic.getPeople());
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
@@ -174,7 +171,7 @@ public class Presentation implements IPresentation {
 	private void printBooks(List<Book> books) {
 		System.out.println("");
 		int i = 0;
-		for(Book b : logic.getBooks()) {
+		for(Book b : books) {
 			System.out.printf("%-5s%-8s%-20s - %-7s%-30s - %-10s%-17s\n", ++i + ".", "Auteur: ", b.getAuthor(), "Titre: ", b.getTitle(), "emprunté: ", ((b.getBorrowerID()!=null) ? "oui le " + b.getBorrowingDate() : "non"));
 		}
 		
@@ -217,7 +214,6 @@ public class Presentation implements IPresentation {
 	private Book askBook() {
 		String title;
 		List<Book> books = new ArrayList<Book>(); // people found
-		Book bookChoice = null; // person to remove
 		printBooks(logic.getBooks());
 		System.out.println("Veuillez entrer le titre: ");
 		title = s.nextLine();
@@ -252,7 +248,6 @@ public class Presentation implements IPresentation {
 		p = askPerson();
 		
 		if(p != null) {
-			printBooks(logic.getBooks());
 			System.out.println("Choisissez le livre a emprunter: ");
 			
 			b = askBook();
@@ -269,6 +264,46 @@ public class Presentation implements IPresentation {
 		} else {
 			System.out.println("L'emprunt n'a pas pu être éxecuté.");
 		}
+	}
+	
+	private void returnBook() {
+		int choice;
+		Person borrower = null;
+		Book bookBorrowed = null;
+		List<Person> borrowers = new ArrayList<Person>();
+		List<Book> booksBorrowed = new ArrayList<Book>();
+		for(Person p : logic.getPeople()) {
+			if(p.isBorrower()) {
+				borrowers.add(p);
+			}
+		}
+		
+		System.out.println("Choisissez la personne qui retourne son livre: ");
+		printPeople(borrowers);
+		choice = nextInt() -1 ;
+		if(choice >= 0 && choice < borrowers.size()) {
+			borrower = borrowers.get(choice);
+			for(UUID id : borrower.getBooks()) {
+				booksBorrowed.addAll(logic.findByBook("id", id.toString()));
+			}
+			
+			System.out.println("Choisissez le livre a retourner: ");
+			printBooks(booksBorrowed);
+			choice = nextInt() -1 ;
+			if(choice >= 0 && choice < booksBorrowed.size()) {
+				bookBorrowed = booksBorrowed.get(choice);
+				if(logic.returns(borrower, bookBorrowed)) {
+					System.out.println("Le livre " + bookBorrowed.getTitle() + " de " + borrower.getName() + " a bien été retourné");
+				} else {
+					System.out.println("Il y a eu une erreur lors du retour.");
+				}
+			} else {
+				System.out.println("Le choix du livre est invalide.");
+			}
+		} else {
+			System.out.println("Le choix de la personne est invalide.");
+		}
+		
 	}
 
 }

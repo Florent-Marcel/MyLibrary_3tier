@@ -1,9 +1,7 @@
 package be.iccbxl.poo.data;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
@@ -16,11 +14,8 @@ import java.util.UUID;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
-import org.simpleframework.xml.core.Persister;
-
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
-import be.iccbxl.poo.matcher.MyMatcher;
 
 public class DataCSV extends DataFile {
 	
@@ -42,13 +37,11 @@ public class DataCSV extends DataFile {
 		super();
 	}
 	
-	@Override
 	public void dataLoad() {
 		loadMembers();
 		loadBooks();
 	}
 
-	@Override
 	public void dataWrite() {
 		writeMembers();
 		writeBooks();
@@ -144,6 +137,7 @@ public class DataCSV extends DataFile {
 								if(s.charAt(0) == ' ')
 									s = s.substring(1);
 								booksBorrowed.add(UUID.fromString(s));
+								System.out.println(s);
 							}
 						}
 						p = new Person(UUID.fromString(id), name, nbMaxBooks, LocalDate.parse(registrationDate, DateTimeFormatter.ofPattern("dd-MM-yyyy")), booksBorrowed);

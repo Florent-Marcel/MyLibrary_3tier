@@ -1,4 +1,4 @@
 id;name;maxBooks;registrationDate;booksBorrowed
 a7ff798a-b9b0-489d-aaa7-9a8dea13f926;Gui;3;02-05-2020;[3cb5e928-f275-4071-afe8-8f327f7892ba, aa8fcfda-44e9-4817-9b9b-7acdd2118c11]
 605270ef-5667-48e9-af80-94fb592df830;Anis;3;02-05-2020;null
-0ef1c3e8-4baa-43cc-96b5-2111b86cdbad;Max;3;02-05-2020;null
+0ef1c3e8-4baa-43cc-96b5-2111b86cdbad;Max;3;02-05-2020;[d1c5758a-fd9d-4f28-9c65-bcaf9e96dbcb]
