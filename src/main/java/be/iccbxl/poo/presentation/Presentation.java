@@ -28,12 +28,12 @@ public class Presentation implements IPresentation {
 	}
 
 	public void run() {
-		int choix = 0;
+		int choice = 0;
 		do {
 			showMenu();
-			choix = nextInt();
+			choice = nextInt();
 			
-			switch(choix) {
+			switch(choice) {
 				case 0:
 					logic.save();
 					System.out.println("Le programme a été quitté avec succès et les données ont été sauvegardées");
@@ -80,7 +80,7 @@ public class Presentation implements IPresentation {
 					System.out.println("Commande inconnue.");
 			}
 			
-		}while(choix != 0);
+		}while(choice != 0);
 	}
 	
 	private void showMenu() {
