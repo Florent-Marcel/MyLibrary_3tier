@@ -8,6 +8,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
+import be.iccbxl.poo.exception.BadBookParameterException;
+
 @Root
 public class Book {
 	
@@ -44,19 +46,22 @@ public class Book {
 	
 	public Book(UUID id, String title, String author, short totalPages, String language) {
 		this(id, title, author, totalPages, language, (byte)14, 1.25, null, null);
-		this.id = id;
-		this.title = title;
-		this.author = author;
-		this.totalPages = totalPages;
-		this.language = language;
-		this.loanPeriod = 14;
-		this.rentalPrice = 1.25;
-		this.borrowerID = null;
-		this.borrowingDate = null;
 	}
 	
 	public Book(UUID id, String title, String author, short totalPages, String language, byte loanPeriod, double rentalPrice,
 			LocalDate borrowingDate, UUID borrowerID) {
+		if(title.equals("") || author.equals("") || language.equals("")) {
+			throw new BadBookParameterException("Le titre, l'auteur et la langue du livre ne doivent pas être vide");
+		}
+		if(totalPages < 1 || loanPeriod < 1) {
+			throw new BadBookParameterException("Le nombre total de pages et la durée d'emprunt ne doivent pas être nuls ou négatifs");
+		}
+		if(rentalPrice < 0) {
+			throw new BadBookParameterException("Le prix d'emprunt ne doit pas être négatif");
+		}
+		if(id == null) {
+			throw new BadBookParameterException("id ne doit pas être null");
+		}
 		this.id = id;
 		this.title = title;
 		this.author = author;
@@ -184,6 +189,15 @@ public class Book {
 	}
 	
 	public void updateBook(String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
+		if(title.equals("") || author.equals("") || language.equals("")) {
+			throw new BadBookParameterException("Le titre, l'auteur et la langue du livre ne doivent pas être vide");
+		}
+		if(totalPages < 1 || loanPeriod < 1) {
+			throw new BadBookParameterException("Le nombre total de pages et la durée d'emprunt ne doivent pas être nuls ou négatifs");
+		}
+		if(rentalPrice < 0) {
+			throw new BadBookParameterException("Le prix d'emprunt ne doit pas être négatif");
+		}
 		this.title = title;
 		this.author = author;
 		this.totalPages = totalPages;

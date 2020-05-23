@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
+import be.iccbxl.poo.exception.BadBookParameterException;
 import be.iccbxl.poo.logic.ILogic;
 
 public class Presentation implements IPresentation {
@@ -373,8 +374,13 @@ public class Presentation implements IPresentation {
 			System.out.println("Entrez la nouvelle langue:");
 			language = s.nextLine();
 			
-			logic.upadte(bModif, title, author, totalPages, loanPeriod, rentalPrice, language);
-			System.out.println("le livre " + title + " a bien été modifié");
+			try{
+				logic.upadte(bModif, title, author, totalPages, loanPeriod, rentalPrice, language);
+				System.out.println("le livre " + title + " a bien été modifié");
+			} catch(BadBookParameterException e) {
+				System.out.println("Paramètres invalides: " + e.getMessage());
+			}
+			
 		}
 		
 	}
