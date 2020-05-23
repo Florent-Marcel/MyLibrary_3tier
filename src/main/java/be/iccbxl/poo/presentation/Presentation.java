@@ -8,6 +8,8 @@ import java.util.UUID;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 import be.iccbxl.poo.exception.BadBookParameterException;
+import be.iccbxl.poo.exception.BadPersonParameterException;
+import be.iccbxl.poo.exception.BookBorrowedException;
 import be.iccbxl.poo.logic.ILogic;
 
 public class Presentation implements IPresentation {
@@ -330,12 +332,11 @@ public class Presentation implements IPresentation {
 			System.out.println("Entrez le nouveau nombre maximum de livre qu'il peut emprunter: ");
 			maxBooks = s.nextByte();
 			s.nextLine();
-			
-			if(!name.equals("") && maxBooks >= pModif.getBooks().size()) {
+			try {
 				logic.update(pModif, name, maxBooks);
 				System.out.println(name + " a bien été modifié");
-			} else {
-				System.out.println("Les nouvelles données sont invalides");
+			} catch(BadPersonParameterException e) {
+				System.out.println("paramètres invalides: " + e.getMessage());
 			}
 		}
 	}
@@ -379,6 +380,8 @@ public class Presentation implements IPresentation {
 				System.out.println("le livre " + title + " a bien été modifié");
 			} catch(BadBookParameterException e) {
 				System.out.println("Paramètres invalides: " + e.getMessage());
+			} catch(BookBorrowedException e) {
+				System.out.println(e.getMessage());
 			}
 			
 		}

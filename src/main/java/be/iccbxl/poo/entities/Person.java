@@ -8,6 +8,8 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import be.iccbxl.poo.exception.BadPersonParameterException;
+
 @Root
 public class Person {
 	
@@ -27,6 +29,22 @@ public class Person {
 	private ArrayList<UUID> books;
 	
 	public Person(UUID id, String name, byte maxBooks, LocalDate registrationDate, ArrayList<UUID> books) {
+		if(name.equals("")) {
+			throw new BadPersonParameterException("Le nom ne doit pas être vide");
+		}
+		if(id == null) {
+			throw new BadPersonParameterException("id ne doit pas être null");
+		}
+		if(books == null) {
+			throw new BadPersonParameterException("books ne doit pas être null");
+		}
+		if(maxBooks < 1 || maxBooks < books.size()) {
+			throw new BadPersonParameterException("Le nombre maximum de livre ne doit pas être nul, négatif "
+					+ "ou plus petit que le nombre de livre emprunté actuellement par la personne");
+		}
+		if(registrationDate == null) {
+			throw new BadPersonParameterException("registrationDate ne doit pas être null");
+		}
 		this.id = id;
 		this.name = name;
 		this.maxBooks = maxBooks;
@@ -100,6 +118,13 @@ public class Person {
 	}
 	
 	public void updatePerson(String name, byte maxBooks) {
+		if(name.equals("")) {
+			throw new BadPersonParameterException("Le nom ne doit pas être vide");
+		}
+		if(maxBooks < 1 || maxBooks < books.size()) {
+			throw new BadPersonParameterException("Le nombre maximum de livre ne doit pas être nul, négatif "
+					+ "ou plus petit que le nombre de livre emprunté actuellement par la personne");
+		}
 		this.name = name;
 		this.maxBooks = maxBooks;
 	}

@@ -9,6 +9,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import be.iccbxl.poo.exception.BadBookParameterException;
+import be.iccbxl.poo.exception.BookBorrowedException;
 
 @Root
 public class Book {
@@ -197,6 +198,9 @@ public class Book {
 		}
 		if(rentalPrice < 0) {
 			throw new BadBookParameterException("Le prix d'emprunt ne doit pas être négatif");
+		}
+		if(isBorrowed()) {
+			throw new BookBorrowedException("Un livre emprunté ne peut pas être modifié");
 		}
 		this.title = title;
 		this.author = author;
