@@ -84,6 +84,10 @@ public class Presentation implements IPresentation {
 				case 10:
 					editABook();
 					break;
+					
+				case 11:
+					ShowBooksLoaned();
+					break;
 				
 				case 20:
 					logic.save();
@@ -97,6 +101,8 @@ public class Presentation implements IPresentation {
 		}while(choice != 0);
 	}
 	
+	
+
 	private void showMenu() {
 		System.out.println("\n1  - Afficher tous les membres.");
 		System.out.println("2  - Ajouter un membre.");
@@ -108,6 +114,7 @@ public class Presentation implements IPresentation {
 		System.out.println("8  - Retourner un livre.");
 		System.out.println("9  - Modifier un membre.");
 		System.out.println("10  - Modifier un livre.");
+		System.out.println("11  - Afficher les livres empruntés d'un membre");
 		System.out.println("20  - Sauvegarder les données");
 		System.out.println("0  - Sauvegarder et quitter.");
 	}
@@ -393,6 +400,12 @@ public class Presentation implements IPresentation {
 			
 		}
 		
+	}
+	
+	private void ShowBooksLoaned() {
+		System.out.println("Choisissez la personne dont vous voulez voir les emprunts actuels");
+		Person p = askPerson();
+		printBooks(logic.getBooksLoaned(p));
 	}
 
 }

@@ -143,4 +143,12 @@ public abstract class DataFile implements IData{
 		b.updateBook(title, author, totalPages, loanPeriod, rentalPrice, language);
 	}
 	
+	public List<Book> getBooksLoaned(Person p){
+		List<Book> booksLoaned = new ArrayList<Book>();
+		for(UUID id : p.getBooks()) {
+			booksLoaned.addAll(findByBook("id", id.toString()));
+		}
+		return booksLoaned;
+	}
+	
 }

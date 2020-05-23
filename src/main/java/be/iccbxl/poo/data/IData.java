@@ -37,4 +37,5 @@ public interface IData {
 	public void update(Person p, String name, byte maxBooks);
 	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language);
 	
+	public List<Book> getBooksLoaned(Person p);
 }

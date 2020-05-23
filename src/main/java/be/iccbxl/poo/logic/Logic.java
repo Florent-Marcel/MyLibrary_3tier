@@ -92,6 +92,11 @@ public class Logic implements ILogic {
 	public boolean computeIsLoanPeriodExceeded(Book b) {
 		return computeRemainingDays(b) < 0;
 	}
+
+	@Override
+	public List<Book> getBooksLoaned(Person p) {
+		return data.getBooksLoaned(p);
+	}
 	
 
 }

@@ -34,6 +34,8 @@ public interface ILogic {
 	
 	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language);
 	
+	public List<Book> getBooksLoaned(Person p);
+	
 	//Logic
 	
 	public int computeRemainingDays(Book b);
