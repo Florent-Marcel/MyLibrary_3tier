@@ -76,8 +76,13 @@ public abstract class DataFile implements IData{
 					personFound.add(p);
 				}
 			}
+		} else if(prop.equals("id")) {
+			for(Person p : people) {
+				if(p.getId().toString().equals(val)) {
+					personFound.add(p);
+				}
+			}
 		}
-		// TODO manage others properties
 		return personFound;
 	}
 
@@ -98,8 +103,13 @@ public abstract class DataFile implements IData{
 					bookFound.add(b);
 				}
 			}
+		} else if(prop.equals("author")) {
+			for(Book b : books) {
+				if(b.getAuthor().toLowerCase().equals(val)) {
+					bookFound.add(b);
+				}
+			}
 		}
-		// TODO manage others properties
 		return bookFound;
 	}
 
