@@ -86,7 +86,7 @@ public class Logic implements ILogic {
 	}
 	
 	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
-		data.upadte(b, title, author, totalPages, loanPeriod, rentalPrice, language);
+		data.update(b, title, author, totalPages, loanPeriod, rentalPrice, language);
 	}
 
 	public boolean computeIsLoanPeriodExceeded(Book b) {
@@ -96,6 +96,16 @@ public class Logic implements ILogic {
 	@Override
 	public List<Book> getBooksLoaned(Person p) {
 		return data.getBooksLoaned(p);
+	}
+
+	@Override
+	public double computeTotalLoanCost(Person p) {
+		double cost = 0;
+		List<Book> booksLoaned = getBooksLoaned(p);
+		for(Book b : booksLoaned) {
+			cost += b.getRentalPrice() + b.computeFine();
+		}
+		return cost;
 	}
 	
 

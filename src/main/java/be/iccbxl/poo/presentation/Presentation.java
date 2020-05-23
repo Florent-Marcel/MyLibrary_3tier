@@ -406,6 +406,7 @@ public class Presentation implements IPresentation {
 		System.out.println("Choisissez la personne dont vous voulez voir les emprunts actuels");
 		Person p = askPerson();
 		printBooks(logic.getBooksLoaned(p));
+		System.out.println("Coût total des emprunts, amendes de retards incluses: " + logic.computeTotalLoanCost(p));
 	}
 
 }

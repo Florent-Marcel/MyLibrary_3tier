@@ -139,7 +139,7 @@ public abstract class DataFile implements IData{
 		p.updatePerson(name, maxBooks);
 	}
 	
-	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
+	public void update(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
 		b.updateBook(title, author, totalPages, loanPeriod, rentalPrice, language);
 	}
 	

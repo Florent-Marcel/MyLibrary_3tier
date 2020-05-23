@@ -43,5 +43,7 @@ public interface ILogic {
 	
 	public boolean computeIsLoanPeriodExceeded(Book b);
 	
+	public double computeTotalLoanCost(Person p);
+	
 	
 }
