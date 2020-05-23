@@ -183,6 +183,15 @@ public class Book {
 		this.language = book.language;
 	}
 	
+	public void updateBook(String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
+		this.title = title;
+		this.author = author;
+		this.totalPages = totalPages;
+		this.loanPeriod = loanPeriod;
+		this.rentalPrice = rentalPrice;
+		this.language = language;
+	}
+	
 	public boolean isBorrowed() {
 		return borrowerID != null && borrowingDate !=null;
 	}

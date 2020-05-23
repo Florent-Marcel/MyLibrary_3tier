@@ -74,6 +74,10 @@ public class Presentation implements IPresentation {
 				case 9:
 					editAMember();
 					break;
+					
+				case 10:
+					editABook();
+					break;
 				
 				case 20:
 					logic.save();
@@ -96,7 +100,8 @@ public class Presentation implements IPresentation {
 		System.out.println("6  - Retirer un livre.");
 		System.out.println("7  - Emprunter un livre.");
 		System.out.println("8  - Retourner un livre.");
-		System.out.println("9  - Modifier un membre..");
+		System.out.println("9  - Modifier un membre.");
+		System.out.println("10  - Modifier un livre.");
 		System.out.println("20  - Sauvegarder les données");
 		System.out.println("0  - Sauvegarder et quitter.");
 	}
@@ -332,6 +337,46 @@ public class Presentation implements IPresentation {
 				System.out.println("Les nouvelles données sont invalides");
 			}
 		}
+	}
+	
+	private void editABook() {
+		String title;
+		String author;
+		short totalPages;
+		byte loanPeriod;
+		double rentalPrice;
+		String language;
+		
+		Book bModif = null;
+		
+		System.out.println("Choisissez le livre a modifier");
+		bModif = askBook();
+		
+		if(bModif != null) {
+			System.out.println("Entrez le nouveau titre:");
+			title = s.nextLine();
+			
+			System.out.println("Entrez le nouvel auteur:");
+			author = s.nextLine();
+			
+			System.out.println("Entrez le nouveau nombre de pages:");
+			totalPages = nextShort();
+			
+			System.out.println("Entrez la nouvelle période d'emprunt:");
+			loanPeriod = s.nextByte();
+			s.nextLine();
+			
+			System.out.println("Entrez la nouveau prix d'emprunt:");
+			rentalPrice = s.nextDouble();
+			s.nextLine();
+			
+			System.out.println("Entrez la nouvelle langue:");
+			language = s.nextLine();
+			
+			logic.upadte(bModif, title, author, totalPages, loanPeriod, rentalPrice, language);
+			System.out.println("le livre " + title + " a bien été modifié");
+		}
+		
 	}
 
 }

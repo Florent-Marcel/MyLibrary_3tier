@@ -82,5 +82,9 @@ public class Logic implements ILogic {
 		data.update(p, name, maxBooks);
 	}
 	
+	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
+		data.upadte(b, title, author, totalPages, loanPeriod, rentalPrice, language);
+	}
+	
 
 }

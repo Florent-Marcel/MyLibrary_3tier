@@ -32,6 +32,8 @@ public interface ILogic {
 	
 	public void update(Person p, String name, byte maxBooks);
 	
+	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language);
+	
 	//Logic
 	public int computeRemainingDays(Book b);
 	
