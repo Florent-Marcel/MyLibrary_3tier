@@ -93,12 +93,10 @@ public class Logic implements ILogic {
 		return computeRemainingDays(b) < 0;
 	}
 
-	@Override
 	public List<Book> getBooksLoaned(Person p) {
 		return data.getBooksLoaned(p);
 	}
 
-	@Override
 	public double computeTotalLoanCost(Person p) {
 		double cost = 0;
 		List<Book> booksLoaned = getBooksLoaned(p);
@@ -106,6 +104,13 @@ public class Logic implements ILogic {
 			cost += b.getRentalPrice() + b.computeFine();
 		}
 		return cost;
+	}
+	
+	public int computeDaysLate(Book b) {
+		if(computeIsLoanPeriodExceeded(b)) {
+			return computeRemainingDays(b) * -1;
+		}
+		return 0;
 	}
 	
 

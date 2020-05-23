@@ -39,6 +39,8 @@ public interface ILogic {
 	//Logic
 	
 	public int computeRemainingDays(Book b);
+	public int computeDaysLate(Book b);
+	
 	public double computeFine(Book b);
 	
 	public boolean computeIsLoanPeriodExceeded(Book b);
