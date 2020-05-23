@@ -32,6 +32,9 @@ public class Presentation implements IPresentation {
 
 	public void run() {
 		int choice = 0;
+		
+		System.out.println(logic.computeRemainingDays(logic.getBooks().get(0)));
+		System.out.println(logic.computeFine(logic.getBooks().get(0)));
 		do {
 			showMenu();
 			choice = nextInt();
@@ -305,6 +308,10 @@ public class Presentation implements IPresentation {
 			choice = nextInt() -1 ;
 			if(choice >= 0 && choice < booksBorrowed.size()) {
 				bookBorrowed = booksBorrowed.get(choice);
+				if(logic.computeIsLoanPeriodExceeded(bookBorrowed)) {
+					System.out.println("Vous avez " + logic.computeRemainingDays(bookBorrowed) *-1 + " jours de retards");
+					System.out.println("Vous devez " + logic.computeFine(bookBorrowed) + "€ d'amende de retard");
+				}
 				if(logic.returns(borrower, bookBorrowed)) {
 					System.out.println("Le livre " + bookBorrowed.getTitle() + " de " + borrower.getName() + " a bien été retourné");
 				} else {

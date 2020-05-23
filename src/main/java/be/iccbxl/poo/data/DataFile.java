@@ -96,7 +96,6 @@ public abstract class DataFile implements IData{
 			for(Book b : books) {
 				if(b.getId().toString().equals(value)) {
 					bookFound.add(b);
-					System.out.println("ok");
 				}
 			}
 		}
@@ -127,8 +126,6 @@ public abstract class DataFile implements IData{
 		} else if( b ==null) {
 			throw new NullPointerException("Book b is null");
 		}
-		System.out.println(p.getBooks());
-		System.out.println(b.getId());
 		
 		if(p.getBooks().contains(b.getId()) && b.getBorrowerID() != null && b.getBorrowerID().equals(p.getId())) {
 			p.unsetBorrow(b);

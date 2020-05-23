@@ -179,6 +179,20 @@ public class Book {
 		
 		return nbDays;
 	}
+	
+	public double computeFine() {
+		double finePerWeek = 0.5;
+		double fine = 0;
+		double tax = 1;
+		
+		byte nbDaysLate = computeRemainingDays();
+		if(nbDaysLate < 0) {
+			nbDaysLate *= -1;
+			fine = ((nbDaysLate / 7) + 1) * finePerWeek + tax;
+		}
+		
+		return fine;
+	}
 
 	public void updateBook(Book book) {
 		this.title = book.title;

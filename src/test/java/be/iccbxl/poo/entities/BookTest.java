@@ -46,5 +46,41 @@ public class BookTest {
 		
 		assertEquals(-10,book.computeRemainingDays());
 	}
+	
+	@Test
+	public void testComputeFineNoFine() {
+		book.setBorrowingDate(LocalDate.now());
+		double fine = book.computeFine();
+		double expected = 0;
+		
+		assertEquals(expected, fine, 0);
+	}
+	
+	@Test
+	public void testComputeFineNoFine0DaysRemaining() {
+		book.setBorrowingDate(LocalDate.now().minusDays(14));
+		double fine = book.computeFine();
+		double expected = 0;
+		
+		assertEquals(expected, fine, 0);
+	}
+	
+	@Test
+	public void testComputeFineWithFine1Week() {
+		book.setBorrowingDate(LocalDate.now().minusDays(15));
+		double fine = book.computeFine();
+		double expected = 1.5;
+		
+		assertEquals(expected, fine, 0);
+	}
+	
+	@Test
+	public void testComputeFineWithFine3Weeks() {
+		book.setBorrowingDate(LocalDate.now().minusDays(28));
+		double fine = book.computeFine();
+		double expected = 2.5;
+		
+		assertEquals(expected, fine, 0);
+	}
 
 }

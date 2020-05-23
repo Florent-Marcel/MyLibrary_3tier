@@ -35,7 +35,11 @@ public interface ILogic {
 	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language);
 	
 	//Logic
+	
 	public int computeRemainingDays(Book b);
+	public double computeFine(Book b);
+	
+	public boolean computeIsLoanPeriodExceeded(Book b);
 	
 	
 }

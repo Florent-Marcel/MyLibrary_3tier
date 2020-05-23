@@ -43,6 +43,10 @@ public class Logic implements ILogic {
 		return b.computeRemainingDays();
 	}
 	
+	public double computeFine(Book b) {
+		return b.computeFine();
+	}
+	
 	public List<Person> getPeople() {
 		return data.getPeople();
 	}
@@ -77,13 +81,16 @@ public class Logic implements ILogic {
 		return data.returns(p, b);
 	}
 
-	@Override
 	public void update(Person p, String name, byte maxBooks) {
 		data.update(p, name, maxBooks);
 	}
 	
 	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language) {
 		data.upadte(b, title, author, totalPages, loanPeriod, rentalPrice, language);
+	}
+
+	public boolean computeIsLoanPeriodExceeded(Book b) {
+		return computeRemainingDays(b) < 0;
 	}
 	
 
