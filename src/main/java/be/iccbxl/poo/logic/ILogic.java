@@ -30,6 +30,8 @@ public interface ILogic {
 	
 	public boolean returns(Person p, Book b);
 	
+	public void update(Person p, String name, byte maxBooks);
+	
 	//Logic
 	public int computeRemainingDays(Book b);
 	

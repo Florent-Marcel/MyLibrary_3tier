@@ -99,6 +99,11 @@ public class Person {
 		this.maxBooks = p.getMaxBooks();
 	}
 	
+	public void updatePerson(String name, byte maxBooks) {
+		this.name = name;
+		this.maxBooks = maxBooks;
+	}
+	
 	public boolean canBorrows() {
 		return books.size() < maxBooks;
 	}

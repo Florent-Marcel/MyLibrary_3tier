@@ -34,5 +34,7 @@ public interface IData {
 	
 	public boolean returns(Person p, Book b);
 	
+	public void update(Person p, String name, byte maxBooks);
+	
 	//public void writeXml();
 }

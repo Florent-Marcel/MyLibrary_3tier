@@ -76,6 +76,11 @@ public class Logic implements ILogic {
 	public boolean returns(Person p, Book b) {
 		return data.returns(p, b);
 	}
+
+	@Override
+	public void update(Person p, String name, byte maxBooks) {
+		data.update(p, name, maxBooks);
+	}
 	
 
 }

@@ -70,8 +70,12 @@ public class Presentation implements IPresentation {
 				case 8:
 					returnBook();
 					break;
-				
+					
 				case 9:
+					editAMember();
+					break;
+				
+				case 20:
 					logic.save();
 					System.out.println("Les données ont été sauvegardées");
 					break;
@@ -92,8 +96,9 @@ public class Presentation implements IPresentation {
 		System.out.println("6  - Retirer un livre.");
 		System.out.println("7  - Emprunter un livre.");
 		System.out.println("8  - Retourner un livre.");
-		System.out.println("9  - Sauvegarder les données");
-		System.out.println("0  - Quitter.");
+		System.out.println("9  - Modifier un membre..");
+		System.out.println("20  - Sauvegarder les données");
+		System.out.println("0  - Sauvegarder et quitter.");
 	}
 	
 	private void printPeople(List<Person> people) {
@@ -304,6 +309,29 @@ public class Presentation implements IPresentation {
 			System.out.println("Le choix de la personne est invalide.");
 		}
 		
+	}
+	
+	private void editAMember() {
+		Person pModif = null;
+		String name;
+		byte maxBooks;
+		System.out.println("Choisissez la personne a modifier");
+		pModif = askPerson();
+		if(pModif != null) {
+			System.out.println("Entrez le nouveau nom: ");
+			name = s.nextLine();
+			
+			System.out.println("Entrez le nouveau nombre maximum de livre qu'il peut emprunter: ");
+			maxBooks = s.nextByte();
+			s.nextLine();
+			
+			if(!name.equals("") && maxBooks >= pModif.getBooks().size()) {
+				logic.update(pModif, name, maxBooks);
+				System.out.println(name + " a bien été modifié");
+			} else {
+				System.out.println("Les nouvelles données sont invalides");
+			}
+		}
 	}
 
 }

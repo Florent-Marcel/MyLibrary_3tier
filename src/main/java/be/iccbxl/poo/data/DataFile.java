@@ -138,4 +138,8 @@ public abstract class DataFile implements IData{
 		return false;
 	}
 	
+	public void update(Person p, String name, byte maxBooks) {
+		p.updatePerson(name, maxBooks);
+	}
+	
 }
