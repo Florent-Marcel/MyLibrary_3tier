@@ -6,11 +6,20 @@ import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
+/**
+ * Classe qui gère toutes les opérations logiques.
+ * @author Marcel F.
+ */
 public class Logic implements ILogic {
 	
+	/**
+	 * Instance de IData pour l'accès aux données.
+	 */
 	private IData data;
 	
-	
+	/**
+	 * Constructeur, initialiseé par Spring.
+	 */
 	public Logic() {
 		//data = new Data("");
 	}
