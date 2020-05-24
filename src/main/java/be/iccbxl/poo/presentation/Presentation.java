@@ -89,7 +89,7 @@ public class Presentation implements IPresentation {
 					ShowBooksLoaned();
 					break;
 				
-				case 20:
+				case 12:
 					logic.save();
 					System.out.println("Les données ont été sauvegardées");
 					break;
@@ -115,7 +115,7 @@ public class Presentation implements IPresentation {
 		System.out.println("9  - Modifier un membre.");
 		System.out.println("10  - Modifier un livre.");
 		System.out.println("11  - Afficher les livres empruntés d'un membre");
-		System.out.println("20  - Sauvegarder les données");
+		System.out.println("12  - Sauvegarder les données");
 		System.out.println("0  - Sauvegarder et quitter.");
 	}
 	

@@ -44,9 +44,7 @@ public class PersonTest {
 	public void testBorrows() {
 		person.borrows(book);
 		
-		assertEquals(book, person.getBooks().get(0));
-		assertEquals(person.getId(), book.getBorrowerID());
-		assertEquals(LocalDate.now(), book.getBorrowingDate());
+		assertEquals(book.getId(), person.getBooks().get(0));
 	}
 
 	@Test

@@ -71,5 +71,21 @@ public class LogicTest {
 		
 		assertEquals(expected, actual, 0);
 	}
+	
+	@Test
+	public void computeDaysLateShoudBe0() {
+		logic.borrows(p, b);
+		
+		assertEquals(0, logic.computeDaysLate(b));
+	}
+	
+	@Test
+	public void computeDaysLateShoudBe5() {
+		logic.borrows(p, b);
+		
+		b.setBorrowingDate(LocalDate.now().minusDays(19));
+		
+		assertEquals(5, logic.computeDaysLate(b));
+	}
 
 }
