@@ -8,13 +8,17 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * test de la classe Book.
+ * @author Marcel F.
+ */
 public class BookTest {
-	String title = "Je suis une legende";
-	String author = "Richard Matheson";
-	short nbPages = 200;
-	String language = "Francais";
-	Book book;
-	UUID idBook;
+	private String title = "Je suis une legende";
+	private String author = "Richard Matheson";
+	private short nbPages = 200;
+	private String language = "Francais";
+	private Book book;
+	private UUID idBook;
 
 	@Before
 	public void setUp() throws Exception {

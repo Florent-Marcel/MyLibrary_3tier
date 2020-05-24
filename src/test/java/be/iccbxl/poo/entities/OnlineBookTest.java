@@ -7,12 +7,16 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de la classe OnlineBook.
+ * @author Marcel F.
+ */
 public class OnlineBookTest {
-	String title = "Je suis une legende";
-	String author = "Richard Matheson";
-	short nbPages = 200;
-	String language = "Francais";
-	OnlineBook onlinebook;
+	private String title = "Je suis une legende";
+	private String author = "Richard Matheson";
+	private short nbPages = 200;
+	private String language = "Francais";
+	private OnlineBook onlinebook;
 
 	@Before
 	public void setUp() throws Exception {

@@ -8,11 +8,15 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de la classe Person.
+ * @author Marcel F.
+ */
 public class PersonTest {
-	Person person;
-	String name = "Jean";
-	UUID idperson;
-	Book book;
+	private Person person;
+	private String name = "Jean";
+	private UUID idperson;
+	private Book book;
 
 	@Before
 	public void setUp() throws Exception {

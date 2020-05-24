@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"be.iccbcl.poo"},{"l":"be.iccbxl.poo.config"},{"l":"be.iccbxl.poo.data"},{"l":"be.iccbxl.poo.entities"},{"l":"be.iccbxl.poo.exception"},{"l":"be.iccbxl.poo.logic"},{"l":"be.iccbxl.poo.matcher"},{"l":"be.iccbxl.poo.presentation"}]

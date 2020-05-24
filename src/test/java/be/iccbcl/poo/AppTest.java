@@ -19,6 +19,10 @@ import be.iccbxl.poo.logic.LogicTest;
    DataFileTest.class ,BookTest.class, GraphicNovelTest.class, OnlineBookTest.class, PersonTest.class, LogicTest.class
 })
 
+/**
+ * Lance les tests unitaires.
+ * @author Marcel F.
+ */
 public class AppTest {
 }
 

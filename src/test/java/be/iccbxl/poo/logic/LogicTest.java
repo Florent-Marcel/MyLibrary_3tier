@@ -13,15 +13,19 @@ import be.iccbxl.poo.data.IData;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
+/**
+ * Test de la classe Logic.
+ * @author Marcel F.
+ */
 public class LogicTest {
-	Logic logic;
-	DataCSV data;
+	private Logic logic;
+	private DataCSV data;
 	
-	Book b;
-	Book b2;
-	Book b3;
+	private Book b;
+	private Book b2;
+	private Book b3;
 	
-	Person p;
+	private Person p;
 	
 	@Before
 	public void setUp() throws Exception {

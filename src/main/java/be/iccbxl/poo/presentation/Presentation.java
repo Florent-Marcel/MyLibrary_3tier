@@ -494,23 +494,26 @@ public class Presentation implements IPresentation {
 	private void ShowBooksLoaned() {
 		System.out.println("Choisissez la personne dont vous voulez voir les emprunts actuels");
 		Person p = askPerson();
-		printBooks(logic.getBooksLoaned(p));
-		for(Book b : logic.getBooksLoaned(p)) {
-			System.out.println("---------------------------------");
-			System.out.println(b.getTitle() + ":");
-			if(!logic.computeIsLoanPeriodExceeded(b)) {
-				System.out.println("Nombre de jours restants: " + logic.computeRemainingDays(b));
-			} else {
-				System.out.println("Nombre de jours en retard: " + logic.computeDaysLate(b));
+		if(p != null) {
+			printBooks(logic.getBooksLoaned(p));
+			for(Book b : logic.getBooksLoaned(p)) {
+				System.out.println("---------------------------------");
+				System.out.println(b.getTitle() + ":");
+				if(!logic.computeIsLoanPeriodExceeded(b)) {
+					System.out.println("Nombre de jours restants: " + logic.computeRemainingDays(b));
+				} else {
+					System.out.println("Nombre de jours en retard: " + logic.computeDaysLate(b));
+				}
+				System.out.println("Coût d'emprunt: " + b.getRentalPrice() + "€");
+				System.out.println("Amende de retard: " + logic.computeFine(b) + "€");
+				System.out.println("Coût total: " + (b.getRentalPrice() + logic.computeFine(b)) + "€");
+				
+				
 			}
-			System.out.println("Coût d'emprunt: " + b.getRentalPrice() + "€");
-			System.out.println("Amende de retard: " + logic.computeFine(b) + "€");
-			System.out.println("Coût total: " + (b.getRentalPrice() + logic.computeFine(b)) + "€");
-			
-			
+			System.out.println("----------------------------");
+			System.out.println("Coût total des emprunts, amendes de retards incluses: " + logic.computeTotalLoanCost(p) + "€");
 		}
-		System.out.println("----------------------------");
-		System.out.println("Coût total des emprunts, amendes de retards incluses: " + logic.computeTotalLoanCost(p) + "€");
+		
 	}
 	
 	/**

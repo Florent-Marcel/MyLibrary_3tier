@@ -15,6 +15,10 @@ import be.iccbxl.poo.entities.Person;
 import be.iccbxl.poo.exception.AlreadyEnregistredException;
 import be.iccbxl.poo.exception.NotEnregistredException;
 
+/**
+ * test de la classe DataFile
+ * @author Marcel F.
+ */
 public class DataFileTest {
 	private DataFile data;
 	

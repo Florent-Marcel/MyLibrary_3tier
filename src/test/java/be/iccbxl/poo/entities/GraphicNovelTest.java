@@ -7,13 +7,18 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test de la classe GraphicNovel.
+ * @author Marcel F.
+ *
+ */
 public class GraphicNovelTest {
-	String title = "Berserk";
-	String author = "kentaro Miura";
-	short nbPages = 200;
-	String language = "Francais";
-	String cartoonist = author;
-	GraphicNovel graphicNovel;
+	private String title = "Berserk";
+	private String author = "kentaro Miura";
+	private short nbPages = 200;
+	private String language = "Francais";
+	private String cartoonist = author;
+	private GraphicNovel graphicNovel;
 
 	@Before
 	public void setUp() throws Exception {
