@@ -14,8 +14,12 @@ public class App implements CommandLineRunner{
     	
         System.out.println( "Bonjour!" );
         
+        // Spring with annotations
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        
+        //Spring with XML
         //ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("be\\iccbxl\\poo\\config\\AppXMLConfiguration.xml");
+        
         IPresentation presentation = ctx.getBean(IPresentation.class);
         
         presentation.run();

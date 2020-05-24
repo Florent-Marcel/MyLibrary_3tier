@@ -5,10 +5,10 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
 
-	<bean id="IData" class="be.iccbxl.poo.data.DataXML" >
-		<property name="filename" value="data\\save.xml" />
-	<!-- bean id="IData" class="be.iccbxl.poo.data.DataCSV" >
-		<property name="folder" value="data" /-->
+	<bean id="IData" class="be.iccbxl.poo.data.DataXML" > 
+		<constructor-arg index="0" value="data\\save.xml" />
+	<!-- <bean id="IData" class="be.iccbxl.poo.data.DataCSV" >
+		<constructor-arg index="0" value="data" />-->
 	</bean>
 	<bean id="ILogic" class="be.iccbxl.poo.logic.Logic" >
 		<property name="data" ref="IData"></property>

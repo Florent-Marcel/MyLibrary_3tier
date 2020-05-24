@@ -25,7 +25,12 @@ public class DataXML extends DataFile {
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
 		
+		serial = new Persister(new MyMatcher());
+		
 		this.setFilename(filename);
+		f = new File(filename);
+		
+		dataLoad();
 	}
 	
 	public DataXML() {
@@ -59,10 +64,7 @@ public class DataXML extends DataFile {
 	}
 
 	public void setFilename(String filename) {
-		serial = new Persister(new MyMatcher());
 		this.filename = filename;
-		f = new File(filename);
-		dataLoad();
 	}
 	
 	/*public void writeXml() {

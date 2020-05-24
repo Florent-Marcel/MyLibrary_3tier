@@ -1,5 +1,5 @@
 <dataXML>
-   <person id="cb06098f-fadc-4ba6-aa10-cfdb5a658f9a" name="Max" maxBooks="3" registrationDate="2020-04-26">
+   <person id="cb06098f-fadc-4ba6-aa10-cfdb5a658f9a" name="Anis" maxBooks="4" registrationDate="2020-04-26">
       <bookRef>2ef33244-0d2f-4658-8dbd-c75cb01e652a</bookRef>
       <bookRef>97fd7760-c948-4b42-bd43-3222c941c939</bookRef>
    </person>
@@ -15,7 +15,7 @@
       <borrowingDate>2020-05-03</borrowingDate>
       <borrowerRef>cb06098f-fadc-4ba6-aa10-cfdb5a658f9a</borrowerRef>
    </book>
-   <book id="10a91838-2a9c-47f9-8ec7-1a5ac12e8126" title="Le Trône de fer" author="George R. R. Martin" totalPages="700" loanPeriod="14" rentalPrice="1.25" language="Français">
+   <book id="10a91838-2a9c-47f9-8ec7-1a5ac12e8126" title="Le Dernier Voeu" author="Andrzej Sapkowski" totalPages="300" loanPeriod="14" rentalPrice="1.25" language="Français">
       <borrowingDate>2020-05-03</borrowingDate>
       <borrowerRef>0d0bf70c-cd88-4801-ad5e-b76c84ebf504</borrowerRef>
    </book>

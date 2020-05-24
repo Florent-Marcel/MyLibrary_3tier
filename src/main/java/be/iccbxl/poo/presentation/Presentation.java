@@ -33,8 +33,6 @@ public class Presentation implements IPresentation {
 	public void run() {
 		int choice = 0;
 		
-		System.out.println(logic.computeRemainingDays(logic.getBooks().get(0)));
-		System.out.println(logic.computeFine(logic.getBooks().get(0)));
 		do {
 			showMenu();
 			choice = nextInt();

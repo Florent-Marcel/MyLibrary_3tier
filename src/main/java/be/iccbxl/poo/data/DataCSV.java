@@ -31,6 +31,14 @@ public class DataCSV extends DataFile {
 		books = new ArrayList<Book>();
 		
 		this.setFolder(folder);
+		
+		this.filenamePeople = folder + "\\people.csv";
+		this.filenameBooks = folder + "\\books.csv";
+		
+		fPeople = new File(filenamePeople);
+		fBooks =  new File(filenameBooks);
+		
+		this.dataLoad();
 	}
 	
 	public DataCSV() {
@@ -50,13 +58,6 @@ public class DataCSV extends DataFile {
 
 	public void setFolder(String folder) {
 		this.folder = folder;
-		this.filenamePeople = folder + "\\people.csv";
-		this.filenameBooks = folder + "\\books.csv";
-		
-		fPeople = new File(filenamePeople);
-		fBooks =  new File(filenameBooks);
-		
-		this.dataLoad();
 	}
 	
 	private void writeMembers() {
@@ -137,7 +138,6 @@ public class DataCSV extends DataFile {
 								if(s.charAt(0) == ' ')
 									s = s.substring(1);
 								booksBorrowed.add(UUID.fromString(s));
-								System.out.println(s);
 							}
 						}
 						p = new Person(UUID.fromString(id), name, nbMaxBooks, LocalDate.parse(registrationDate, DateTimeFormatter.ofPattern("dd-MM-yyyy")), booksBorrowed);
