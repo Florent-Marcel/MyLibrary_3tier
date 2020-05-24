@@ -7,7 +7,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import be.iccbxl.poo.config.AppConfiguration;
 import be.iccbxl.poo.presentation.IPresentation;
 
-
+/**
+ * La classe pour lancer le programme.
+ * @author Marcel F.
+ */
 public class App implements CommandLineRunner{
     public static void main( String[] args ) 
     {
@@ -28,6 +31,9 @@ public class App implements CommandLineRunner{
         System.out.println( "Au revoir !" );
     }
 
+    /**
+     * Pour CommandLineRunner
+     */
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub

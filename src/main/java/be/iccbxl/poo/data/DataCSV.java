@@ -17,15 +17,40 @@ import org.apache.commons.csv.CSVRecord;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 
+/**
+ * Représente la classe data qui gère les données et les chargents/stocks dans un fichier CSV.
+ * @author floma
+ */
 public class DataCSV extends DataFile {
-	
+	/**
+	 * Le chemin du dossier contenant les fichiers CSV.
+	 */
 	private String folder;
+	
+	/**
+	 * Le nom du fichier contenant la liste des membres.
+	 */
 	private String filenamePeople;
+	
+	/**
+	 * Le nom du fichier contenant la liste des livres.
+	 */
 	private String filenameBooks;
 	
+	/**
+	 * Le fichier contenant la liste des membres.
+	 */
 	private File fPeople;
+	
+	/**
+	 * Le fichier contenant la liste des livres.
+	 */
 	private File fBooks;
 
+	/**
+	 * Le constructeur pour créer une instance de DataCSV.
+	 * @param folder Le chemin du dossier contenant les fichiers stockant les membres et les livres.
+	 */
 	public DataCSV(String folder) {
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
@@ -41,25 +66,41 @@ public class DataCSV extends DataFile {
 		this.dataLoad();
 	}
 	
+	/**
+	 * Constructeur sans paramètres pour permettre plus de liberté avec Spring. a utiliser avec les setters.
+	 */
 	public DataCSV() {
 		super();
 	}
 	
+	/**
+	 * Charge les données des membres et des livres a partir des fichiers.
+	 */
 	public void dataLoad() {
 		loadMembers();
 		loadBooks();
 	}
 
+	/**
+	 * écrit les données dans les fichiers.
+	 */
 	public void dataWrite() {
 		writeMembers();
 		writeBooks();
 
 	}
 
+	/**
+	 * Change le dossier contenant les fichiers CSV.
+	 * @param folder Le dossier contenant les fichiers CSV.
+	 */
 	public void setFolder(String folder) {
 		this.folder = folder;
 	}
 	
+	/**
+	 * écrit les membres dans le fichier <code>fPeople</code>.
+	 */
 	private void writeMembers() {
 		CSVPrinter printer = null;
 		
@@ -101,6 +142,9 @@ public class DataCSV extends DataFile {
 		}
 	}
 	
+	/**
+	 * Charge les membres a partir du fichier <code>fPeople</code>.
+	 */
 	private void loadMembers() {
 		if(fPeople.exists()) {
 			FileReader fr = null;
@@ -154,6 +198,9 @@ public class DataCSV extends DataFile {
 		}
 	}
 	
+	/**
+	 * écrit les livres dans le fichier <code>fBooks</code>.
+	 */
 	private void writeBooks() {
 		
 		CSVPrinter printer = null;
@@ -204,6 +251,9 @@ public class DataCSV extends DataFile {
 		}
 	}
 	
+	/**
+	 * Charge les données dans le fichier <code>fBooks</code>.
+	 */
 	private void loadBooks() {
 		if(fPeople.exists()) {
 			FileReader fr = null;
