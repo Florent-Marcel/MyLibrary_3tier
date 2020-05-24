@@ -7,9 +7,11 @@ import java.util.UUID;
 
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
+import be.iccbxl.poo.exception.AlreadyEnregistredException;
 import be.iccbxl.poo.exception.BadBookParameterException;
 import be.iccbxl.poo.exception.BadPersonParameterException;
 import be.iccbxl.poo.exception.BookBorrowedException;
+import be.iccbxl.poo.exception.NotEnregistredException;
 import be.iccbxl.poo.logic.ILogic;
 
 public class Presentation implements IPresentation {
@@ -145,10 +147,17 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nom: ");
 		name = s.nextLine();
 		
-		if(logic.register(new Person(UUID.randomUUID(), name))) {
+		try{
+			logic.register(new Person(UUID.randomUUID(), name)); 
 			System.out.println(name + " a bien été ajouté");
-		} else {
+			
+		} catch(NullPointerException e) {
 			System.out.println(name + " n'a pas pu être ajoute");
+			System.out.println(e.getMessage());
+			
+		} catch(AlreadyEnregistredException e) {
+			System.out.println(name + " n'a pas pu être ajoute");
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -215,10 +224,17 @@ public class Presentation implements IPresentation {
 		System.out.println("Veuillez entrer le nombre de pages: ");
 		nbPages = nextShort();
 		
-		if(logic.register(new Book(UUID.randomUUID(), title, author, nbPages, language))) {
+		try{
+			logic.register(new Book(UUID.randomUUID(), title, author, nbPages, language));
 			System.out.println(title + " a bien été ajoute");
-		} else {
+			
+		} catch(NullPointerException e) {
 			System.out.println(title + " n'a pas pu être ajouté");
+			System.out.println(e.getMessage());
+			
+		} catch(AlreadyEnregistredException e) {
+			System.out.println(title + " n'a pas pu être ajouté");
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -274,10 +290,19 @@ public class Presentation implements IPresentation {
 			b = askBook();
 			
 			if(b != null) {
-				if(logic.borrows(p, b)) {
-					System.out.println("Le livre " + b.getTitle() + " a été empruntré par " + p.getName());
-				} else {
-					System.out.println("Le livre a déja été emprunté ou la personne a dépassé son quota");
+				try{
+					if(logic.borrows(p, b))
+						System.out.println("Le livre " + b.getTitle() + " a été empruntré par " + p.getName());
+					else
+						System.out.println("Le livre a déja été emprunté ou la personne a dépassé son quota");
+					
+				} catch(NullPointerException e) {
+					System.out.println(e.getMessage());
+					System.out.println("L'emprunt n'a pas pu être éxecuté.");
+					
+				} catch(NotEnregistredException e) {
+					System.out.println(e.getMessage());
+					System.out.println("L'emprunt n'a pas pu être éxecuté.");
 				}
 			} else {
 				System.out.println("L'emprunt n'a pas pu être éxecuté.");
@@ -317,11 +342,20 @@ public class Presentation implements IPresentation {
 					System.out.println("Vous avez " + logic.computeRemainingDays(bookBorrowed) *-1 + " jours de retards");
 					System.out.println("Vous devez " + logic.computeFine(bookBorrowed) + "€ d'amende de retard");
 				}
-				if(logic.returns(borrower, bookBorrowed)) {
-					System.out.println("Le livre " + bookBorrowed.getTitle() + " de " + borrower.getName() + " a bien été retourné");
-				} else {
-					System.out.println("Il y a eu une erreur lors du retour.");
+				try {
+					if(logic.returns(borrower, bookBorrowed)) {
+						System.out.println("Le livre " + bookBorrowed.getTitle() + " de " + borrower.getName() + " a bien été retourné");
+					} else {
+						System.out.println("Il y a eu une erreur lors du retour.");
+					}
+				} catch(NullPointerException e) {
+					System.out.println(e.getMessage());
+					System.out.println("Le retour n'a pas pu être éxécuté");
+				} catch(NotEnregistredException e) {
+					System.out.println(e.getMessage());
+					System.out.println("Le retour n'a pas pu être éxécuté");
 				}
+				
 			} else {
 				System.out.println("Le choix du livre est invalide.");
 			}

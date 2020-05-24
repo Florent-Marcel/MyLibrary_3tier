@@ -15,12 +15,12 @@ public class Logic implements ILogic {
 		//data = new Data("");
 	}
 
-	public boolean register(Person p) {
-		return data.save(p);
+	public void register(Person p) {
+		data.save(p);
 	}
 
-	public boolean register(Book b) {
-		return data.save(b);
+	public void register(Book b) {
+		data.save(b);
 	}
 
 	public boolean unRegister(Person p) {
@@ -29,14 +29,6 @@ public class Logic implements ILogic {
 
 	public boolean unRegister(Book b) {
 		return data.delete(b);
-	}
-
-	public boolean update(Person p) {
-		return data.update(p);
-	}
-
-	public boolean update(Book b) {
-		return data.update(b);
 	}
 
 	public int computeRemainingDays(Book b) {
@@ -111,6 +103,14 @@ public class Logic implements ILogic {
 			return computeRemainingDays(b) * -1;
 		}
 		return 0;
+	}
+
+	public boolean isEnregistred(Person p) {
+		return data.isEnregistred(p);
+	}
+
+	public boolean isEnregistred(Book b) {
+		return data.isEnregistred(b);
 	}
 	
 

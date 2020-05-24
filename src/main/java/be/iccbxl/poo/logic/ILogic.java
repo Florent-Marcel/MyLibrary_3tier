@@ -8,14 +8,11 @@ import be.iccbxl.poo.entities.Person;
 public interface ILogic {
 	//Data access
 	
-	public boolean register(Person p);
-	public boolean register(Book b);
+	public void register(Person p);
+	public void register(Book b);
 	
 	public boolean unRegister(Person p);
 	public boolean unRegister(Book b);
-	
-	public boolean update(Person p);
-	public boolean update(Book b);
 	
 	public List<Person> getPeople();
 	public List<Book> getBooks();
@@ -35,6 +32,9 @@ public interface ILogic {
 	public void upadte(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language);
 	
 	public List<Book> getBooksLoaned(Person p);
+	
+	public boolean isEnregistred(Person p);
+	public boolean isEnregistred(Book b);
 	
 	//Logic
 	

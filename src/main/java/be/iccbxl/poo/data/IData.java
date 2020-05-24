@@ -17,11 +17,8 @@ public interface IData {
 	public boolean deleteBook(UUID uuid);
 	public boolean delete(Book b);
 	
-	public boolean save(Person p);
-	public boolean save(Book b);
-	
-	public boolean update(Person p);
-	public boolean update(Book b);
+	public void save(Person p);
+	public void save(Book b);
 	
 	public List<Person> getPeople();
 	public List<Book> getBooks();
@@ -38,4 +35,7 @@ public interface IData {
 	public void update(Book b, String title, String author, short totalPages, byte loanPeriod, double rentalPrice, String language);
 	
 	public List<Book> getBooksLoaned(Person p);
+	
+	public boolean isEnregistred(Person p);
+	public boolean isEnregistred(Book b);
 }

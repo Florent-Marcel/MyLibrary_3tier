@@ -7,6 +7,8 @@ import java.util.UUID;
 import org.simpleframework.xml.ElementList;
 import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
+import be.iccbxl.poo.exception.AlreadyEnregistredException;
+import be.iccbxl.poo.exception.NotEnregistredException;
 
 public abstract class DataFile implements IData{
 	@ElementList(inline = true, entry = "person", required=false)
@@ -25,44 +27,45 @@ public abstract class DataFile implements IData{
 	}
 	
 	public boolean deletePerson(UUID uuid) {
-		// TODO Auto-generated method stub
+		List<Person> listP = findByPerson("id", uuid.toString());
+		if(listP.size() > 0)
+			return people.remove(listP.get(0));
 		return false;
 	}
 	
 	public boolean delete(Person p) {
-		
-		// TODO delete in files + manage errors
 		return people.remove(p);
 	}
 
 	public boolean deleteBook(UUID uuid) {
-		// TODO Auto-generated method stub
+		List<Book> listB = findByBook("id", uuid.toString());
+		if(listB.size() > 0)
+			return books.remove(listB.get(0));
 		return false;
 	}
 
 	public boolean delete(Book b) {
-		// TODO delete in files + manage errors
 		return books.remove(b);
 	}
 
-	public boolean save(Person p) {
-		// TODO add in files + manage errors
-		return people.add(p);
+	public void save(Person p) {
+		if(p == null) {
+			throw new NullPointerException("La personne ne doit pas être nulle");
+		}
+		if(isEnregistred(p)) {
+			throw new AlreadyEnregistredException("La personne est déja enregistrée");
+		}
+		people.add(p);
 	}
 
-	public boolean save(Book b) {
-		// TODO delete in files + manage errors
-		return books.add(b);
-	}
-
-	public boolean update(Person p) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean update(Book b) {
-		// TODO Auto-generated method stub
-		return false;
+	public void save(Book b) {
+		if(b == null) {
+			throw new NullPointerException("Le livre ne doit pas être null");
+		}
+		if(isEnregistred(b)) {
+			throw new AlreadyEnregistredException("Le livre est déja enregistré");
+		}
+		books.add(b);
 	}
 
 	public List<Person> findByPerson(String property, String value) {
@@ -122,6 +125,13 @@ public abstract class DataFile implements IData{
 	}
 	
 	public boolean borrows(Person p, Book b) {
+		if(p == null || b == null) {
+			throw new NullPointerException("Le livre et la personne ne doivent pas être nulls");
+		}
+		if(!isEnregistred(p) || !isEnregistred(b)) {
+			throw new NotEnregistredException("Le livre et la personne doivent être présentes dans la base de donnée");
+		}
+		
 		if(p.canBorrows() && !b.isBorrowed()) {
 			p.borrows(b);
 			b.borrows(p);
@@ -131,10 +141,11 @@ public abstract class DataFile implements IData{
 	}
 	
 	public boolean returns(Person p, Book b) {
-		if(p == null) {
-			throw new NullPointerException("Person p is null");
-		} else if( b ==null) {
-			throw new NullPointerException("Book b is null");
+		if(p == null || b == null) {
+			throw new NullPointerException("Le livre et la personne ne doivent pas être nulls");
+		}
+		if(!isEnregistred(p) || !isEnregistred(b)) {
+			throw new NotEnregistredException("Le livre et la personne doivent être présentes dans la base de donnée");
 		}
 		
 		if(p.getBooks().contains(b.getId()) && b.getBorrowerID() != null && b.getBorrowerID().equals(p.getId())) {
@@ -161,4 +172,21 @@ public abstract class DataFile implements IData{
 		return booksLoaned;
 	}
 	
+	public boolean isEnregistred(Person p) {
+		for(Person pers : people) {
+			if(pers.equals(p)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isEnregistred(Book b) {
+		for(Book book : books) {
+			if(book.equals(b)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
