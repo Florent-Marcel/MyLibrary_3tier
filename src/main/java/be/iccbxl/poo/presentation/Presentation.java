@@ -14,22 +14,28 @@ import be.iccbxl.poo.exception.BookBorrowedException;
 import be.iccbxl.poo.exception.NotEnregistredException;
 import be.iccbxl.poo.logic.ILogic;
 
+/**
+ * Permet de gèrer l'interface utilisateur.
+ * @author Marcel F.
+ *
+ */
 public class Presentation implements IPresentation {
 	
+	/**
+	 * Instance de ILogic pour les opérations logiques et l'accès aux données.
+	 */
 	private ILogic logic;
 	
+	/**
+	 * Scanner pour recevoir les entrées utilisateur.
+	 */
 	private Scanner s;
 	
-	public void setLogic(ILogic logic) {
-		this.logic = logic;
-	}
-
+	/**
+	 * Constructeur.
+	 */
 	public Presentation() {
-		//AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfiguration.class);
 		s = new Scanner(System.in);
-		//logic = new Logic();
-		
-		
 	}
 
 	public void run() {
@@ -101,8 +107,9 @@ public class Presentation implements IPresentation {
 		}while(choice != 0);
 	}
 	
-	
-
+	/**
+	 * Affiche le menu.
+	 */
 	private void showMenu() {
 		System.out.println("\n1  - Afficher tous les membres.");
 		System.out.println("2  - Ajouter un membre.");
@@ -119,6 +126,10 @@ public class Presentation implements IPresentation {
 		System.out.println("0  - Sauvegarder et quitter.");
 	}
 	
+	/**
+	 * Affiche une liste de personne.
+	 * @param people La liste de personne.
+	 */
 	private void printPeople(List<Person> people) {
 		System.out.println("");
 		int i = 0;
@@ -128,6 +139,10 @@ public class Presentation implements IPresentation {
 		System.out.println("");
 	}
 	
+	/**
+	 * demande a l'utilisateur un <code>int<code> et le retourne. 
+	 * @return L'<code>int<code> que l'utilisateur a entré.
+	 */
 	private int nextInt() {
 		int i = s.nextInt();
 		s.nextLine();
@@ -135,6 +150,10 @@ public class Presentation implements IPresentation {
 		return i;
 	}
 	
+	/**
+	 * demande a l'utilisateur un <code>short<code> et le retourne. 
+	 * @return L'<code>short<code> que l'utilisateur a entré.
+	 */
 	private short nextShort() {
 		short nb = s.nextShort();
 		s.nextLine();
@@ -142,6 +161,9 @@ public class Presentation implements IPresentation {
 		return nb;
 	}
 	
+	/**
+	 * Demande a l'utilisateur d'ajouter un membre.
+	 */
 	private void addMember() {
 		String name;
 		System.out.println("Veuillez entrer le nom: ");
@@ -161,6 +183,9 @@ public class Presentation implements IPresentation {
 		}
 	}
 	
+	/**
+	 * Demande a l'utilisateur de retirer un membre.
+	 */
 	private void removeMember() {
 		Person p = askPerson();
 		if(p != null && logic.unRegister(p)) {
@@ -170,6 +195,10 @@ public class Presentation implements IPresentation {
 		}
 	}
 	
+	/**
+	 * permet a l'utilisateur de choisir une personne.
+	 * @return La personne choisie par l'utilisateur. <code>Null</code> si aucune personne n'a été trouvé.
+	 */
 	private Person askPerson() {
 		String name;
 		List<Person> pers = new ArrayList<Person>(); // people found
@@ -198,6 +227,10 @@ public class Presentation implements IPresentation {
 		return null;
 	}
 	
+	/**
+	 * affiche une liste de livre.
+	 * @param books La liste de livre.
+	 */
 	private void printBooks(List<Book> books) {
 		System.out.println("");
 		int i = 0;
@@ -208,6 +241,9 @@ public class Presentation implements IPresentation {
 		System.out.println("");
 	}
 	
+	/**
+	 * Demande a l'utilisateur d'ajouter un livre.
+	 */
 	private void addBook() {
 		String title, author, language;
 		short nbPages;
@@ -238,6 +274,9 @@ public class Presentation implements IPresentation {
 		}
 	}
 	
+	/**
+	 * Demande a l'utilisateur de retirer un livre.
+	 */
 	private void removeBook() {
 		Book book = askBook();
 		if(book != null && logic.unRegister(book)) {
@@ -247,7 +286,10 @@ public class Presentation implements IPresentation {
 		}
 	}
 	
-	
+	/**
+	 * permet a l'utilisateur de choisir un livre. retourne <code>null</code> si aucune livre n'a été trouvé.
+	 * @return Le livre choisi par l'utilisateur. Retourne <code>null</code> si aucune livre n'a été trouvé.
+	 */
 	private Book askBook() {
 		String title;
 		List<Book> books = new ArrayList<Book>(); // people found
@@ -276,6 +318,9 @@ public class Presentation implements IPresentation {
 		return null;
 	}
 	
+	/**
+	 * Demande a l'utilisateur de sélectionner une personne puis un livre et éxecute l'emprunt.
+	 */
 	private void BorrowsBook() {
 		Person p;
 		Book b;
@@ -312,6 +357,9 @@ public class Presentation implements IPresentation {
 		}
 	}
 	
+	/**
+	 * Demande a l'utilisateur de sélectionner une personne puis un livre et éxecute le retour.
+	 */
 	private void returnBook() {
 		int choice;
 		Person borrower = null;
@@ -365,6 +413,9 @@ public class Presentation implements IPresentation {
 		
 	}
 	
+	/**
+	 * Demande a l'utilisateur de modifier un membre.
+	 */
 	private void editAMember() {
 		Person pModif = null;
 		String name;
@@ -387,6 +438,9 @@ public class Presentation implements IPresentation {
 		}
 	}
 	
+	/**
+	 * Demande a l'utilisateur de modifier un livre.
+	 */
 	private void editABook() {
 		String title;
 		String author;
@@ -434,6 +488,9 @@ public class Presentation implements IPresentation {
 		
 	}
 	
+	/**
+	 * Permet a l'utilisateur d'afficher les détails des livres empruntés par un membre.
+	 */
 	private void ShowBooksLoaned() {
 		System.out.println("Choisissez la personne dont vous voulez voir les emprunts actuels");
 		Person p = askPerson();
@@ -454,6 +511,14 @@ public class Presentation implements IPresentation {
 		}
 		System.out.println("----------------------------");
 		System.out.println("Coût total des emprunts, amendes de retards incluses: " + logic.computeTotalLoanCost(p) + "€");
+	}
+	
+	/**
+	 * Change l'instance de <code>Ilogic</code>.
+	 * @param logic L'instance de <code>Ilogic</code>.
+	 */
+	public void setLogic(ILogic logic) {
+		this.logic = logic;
 	}
 
 }
