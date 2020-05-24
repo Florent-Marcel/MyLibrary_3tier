@@ -19,7 +19,7 @@ import be.iccbxl.poo.entities.Person;
 
 /**
  * Représente la classe data qui gère les données et les chargents/stocks dans un fichier CSV.
- * @author floma
+ * @author Marcel F.
  */
 public class DataCSV extends DataFile {
 	/**

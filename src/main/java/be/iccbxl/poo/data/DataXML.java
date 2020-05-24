@@ -12,15 +12,32 @@ import be.iccbxl.poo.entities.Book;
 import be.iccbxl.poo.entities.Person;
 import be.iccbxl.poo.matcher.MyMatcher;
 
+/**
+ * Représente la classe data qui gère les données et les chargents/stocks dans un fichier XML.
+ * @author Marcel F.
+ */
 @Root
 public class DataXML extends DataFile {
 	
+	/**
+	 * permet de lire et écrire.
+	 */
 	private Serializer serial;
 	
+	/**
+	 * Le chemin du fichier XML.
+	 */
 	private String filename;
 	
+	/**
+	 * Le fichier XML.
+	 */
 	private File f;
 	
+	/**
+	 * Le constructeur pour créer une instance de DataXML.
+	 * @param filename Le chemin du fichier XML.
+	 */
 	public DataXML(String filename) {
 		people = new ArrayList<Person>();
 		books = new ArrayList<Book>();
@@ -33,16 +50,16 @@ public class DataXML extends DataFile {
 		dataLoad();
 	}
 	
+	/**
+	 * Constructeur sans paramètres pour permettre plus de liberté avec Spring. a utiliser avec les setters.
+	 */
 	public DataXML() {
 		super();
 	}
-
-
-	public boolean deletePerson(UUID uuid) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
+	/**
+	 * Charge les données des membres et des livres a partir des fichiers.
+	 */
 	public void dataLoad() {
 		try {
 			 IData tmpData = serial.read(DataXML.class, f);
@@ -53,6 +70,9 @@ public class DataXML extends DataFile {
 		}
 	}
 	
+	/**
+	 * écrit les données dans les fichiers.
+	 */
 	public void dataWrite() {
 		
 		try {
@@ -63,6 +83,10 @@ public class DataXML extends DataFile {
 		}
 	}
 
+	/**
+	 * Change le chemin du fichier XML.
+	 * @param filename Le chemin du fichier XML.
+	 */
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
