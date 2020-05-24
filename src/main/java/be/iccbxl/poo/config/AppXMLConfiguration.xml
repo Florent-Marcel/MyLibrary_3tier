@@ -16,7 +16,4 @@
 	<bean id="IPresentation" class="be.iccbxl.poo.presentation.Presentation" >
 		<property name="logic" ref="ILogic"></property>
 	</bean>
-	
-	
-	
 </beans> 
