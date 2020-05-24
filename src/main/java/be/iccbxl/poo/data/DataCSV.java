@@ -73,17 +73,11 @@ public class DataCSV extends DataFile {
 		super();
 	}
 	
-	/**
-	 * Charge les données des membres et des livres a partir des fichiers.
-	 */
 	public void dataLoad() {
 		loadMembers();
 		loadBooks();
 	}
 
-	/**
-	 * écrit les données dans les fichiers.
-	 */
 	public void dataWrite() {
 		writeMembers();
 		writeBooks();

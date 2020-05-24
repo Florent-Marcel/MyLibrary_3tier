@@ -57,9 +57,6 @@ public class DataXML extends DataFile {
 		super();
 	}
 	
-	/**
-	 * Charge les données des membres et des livres a partir des fichiers.
-	 */
 	public void dataLoad() {
 		try {
 			 IData tmpData = serial.read(DataXML.class, f);
@@ -70,9 +67,6 @@ public class DataXML extends DataFile {
 		}
 	}
 	
-	/**
-	 * écrit les données dans les fichiers.
-	 */
 	public void dataWrite() {
 		
 		try {
